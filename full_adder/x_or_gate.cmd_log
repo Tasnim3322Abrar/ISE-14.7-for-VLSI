@@ -1,0 +1,3 @@
+vhdtdtfi -lib work nand_gate.vhd -lib work x_or_gate.vhd -prj full_adder -o x_or_gate.spl -module x_or_gate -template /opt/Xilinx/14.7/ISE_DS/ISE//data/splfile.tft -deleteonerror 
+spl2sym -intstyle ise -family artix7 x_or_gate.spl /home/ise/computer/full_adder/x_or_gate.sym 
+xst -intstyle ise -ifn "/home/ise/computer/full_adder/x_or_gate.xst" -ofn "/home/ise/computer/full_adder/x_or_gate.syr" 

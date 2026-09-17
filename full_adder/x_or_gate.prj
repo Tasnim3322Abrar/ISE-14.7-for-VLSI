@@ -1,0 +1,2 @@
+vhdl work "nand_gate.vhd"
+vhdl work "x_or_gate.vhd"
