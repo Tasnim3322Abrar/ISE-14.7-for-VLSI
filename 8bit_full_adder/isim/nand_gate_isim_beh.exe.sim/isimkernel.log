@@ -1,0 +1,28 @@
+Command line:
+   nand_gate_isim_beh.exe
+     -simmode  gui
+     -simrunnum  0
+     -socket  44658
+
+Thu Sep 17 21:07:41 2026
+
+
+ Elaboration Time: 0.03 sec
+
+ Current Memory Usage: 198.603 Meg
+
+ Total Signals          : 3
+ Total Nets             : 3
+ Total Signal Drivers   : 1
+ Total Blocks           : 2
+ Total Primitive Blocks : 2
+ Total Processes        : 1
+ Total Traceable Variables  : 8
+ Total Scalar Nets and Variables : 363
+
+ Total Simulation Time: 0.04 sec
+
+ Current Memory Usage: 276.201 Meg
+
+Thu Sep 17 21:10:15 2026
+
