@@ -1,0 +1,4 @@
+work	"flip_flop.vhd"
+work	"nand_gate.vhd"
+work	"register_4bit.vhd"
+work	"register_8bit.vhd"

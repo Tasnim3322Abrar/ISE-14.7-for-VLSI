@@ -1,0 +1,4 @@
+xst -intstyle ise -ifn "/home/ise/register/register.xst" -ofn "/home/ise/register/register.syr" 
+xst -intstyle ise -ifn "/home/ise/register/register.xst" -ofn "/home/ise/register/register.syr" 
+xst -intstyle ise -ifn "/home/ise/register/register.xst" -ofn "/home/ise/register/register.syr" 
+xst -intstyle ise -ifn "/home/ise/register/register.xst" -ofn "/home/ise/register/register.syr" 
