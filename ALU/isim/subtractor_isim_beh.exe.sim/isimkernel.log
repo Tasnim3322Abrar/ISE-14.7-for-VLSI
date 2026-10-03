@@ -1,0 +1,28 @@
+Command line:
+   subtractor_isim_beh.exe
+     -simmode  gui
+     -simrunnum  0
+     -socket  43998
+
+Sat Oct  3 19:23:36 2026
+
+
+ Elaboration Time: 0.02 sec
+
+ Current Memory Usage: 198.607 Meg
+
+ Total Signals          : 90
+ Total Nets             : 20
+ Total Signal Drivers   : 17
+ Total Blocks           : 26
+ Total Primitive Blocks : 18
+ Total Processes        : 17
+ Total Traceable Variables  : 8
+ Total Scalar Nets and Variables : 380
+
+ Total Simulation Time: 0.03 sec
+
+ Current Memory Usage: 276.206 Meg
+
+Sat Oct  3 19:23:49 2026
+

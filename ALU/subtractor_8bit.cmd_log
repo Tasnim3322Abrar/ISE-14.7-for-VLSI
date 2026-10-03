@@ -1,0 +1,1 @@
+xst -intstyle ise -ifn "/home/ise/computer/ALU/subtractor_8bit.xst" -ofn "/home/ise/computer/ALU/subtractor_8bit.syr" 
