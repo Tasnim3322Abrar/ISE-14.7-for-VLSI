@@ -1,0 +1,1 @@
+xst -intstyle ise -ifn "/home/ise/computer/cpu_design/mux_8bit.xst" -ofn "/home/ise/computer/cpu_design/mux_8bit.syr" 

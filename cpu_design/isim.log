@@ -1,0 +1,22 @@
+ISim log file
+Running: /home/ise/computer/cpu_design/cpu_top_tb_isim_beh.exe -intstyle ise -gui -tclbatch isim.cmd -wdb /home/ise/computer/cpu_design/cpu_top_tb_isim_beh.wdb 
+ISim P.20131013 (signature 0xfbc00daa)
+----------------------------------------------------------------------
+WARNING:Security:42 - Your software subscription period has lapsed. Your current version of Xilinx tools will continue to function, but you no longer qualify for Xilinx software updates or new releases.
+
+
+----------------------------------------------------------------------
+This is a Full version of ISim.
+Time resolution is 1 ps
+# onerror resume
+# wave add /
+# run 1000 ns
+Simulator is doing circuit initialization process.
+Finished circuit initialization process.
+at 63 ns: Error: FAIL: NOT
+at 84 ns: Error: FAIL: JZ 05
+at 105 ns: Error: FAIL: ADD 11
+at 126 ns: Error: FAIL: SHL at address 6
+at 147 ns: Error: FAIL: JZ 00 not taken
+at 168 ns: Error: FAIL: SHL at address 8
+at 168 ns: Note: Set 9 CPU testbench completed. (/cpu_top_tb/).

@@ -1,0 +1,1 @@
+xst -intstyle ise -ifn "/home/ise/computer/cpu_design/program_rom.xst" -ofn "/home/ise/computer/cpu_design/program_rom.syr" 
