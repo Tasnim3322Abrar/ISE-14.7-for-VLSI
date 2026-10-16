@@ -20,3 +20,4 @@ at 126 ns: Error: FAIL: SHL at address 6
 at 147 ns: Error: FAIL: JZ 00 not taken
 at 168 ns: Error: FAIL: SHL at address 8
 at 168 ns: Note: Set 9 CPU testbench completed. (/cpu_top_tb/).
+# exit 0

@@ -126,9 +126,6 @@ Parsing architecture <Structural> of entity <half_adder>.
 Parsing VHDL file "/home/ise/computer/cpu_design/full_adder.vhd" into library work
 Parsing entity <full_adder>.
 Parsing architecture <Structural> of entity <full_adder>.
-Parsing VHDL file "/home/ise/computer/cpu_design/register_8bit.vhd" into library work
-Parsing entity <register_8bit>.
-Parsing architecture <Behavioral> of entity <register_8bit>.
 Parsing VHDL file "/home/ise/computer/cpu_design/not_gate.vhd" into library work
 Parsing entity <not_gate>.
 Parsing architecture <Structural> of entity <not_gate>.
@@ -138,24 +135,25 @@ Parsing architecture <Structural> of entity <full_adder_8bit>.
 Parsing VHDL file "/home/ise/computer/cpu_design/zero_flag.vhd" into library work
 Parsing entity <zero_flag>.
 Parsing architecture <Structural> of entity <zero_flag>.
+Parsing VHDL file "/home/ise/computer/cpu_design/register_8bit.vhd" into library work
+Parsing entity <register_8bit>.
+Parsing architecture <Behavioral> of entity <register_8bit>.
 Parsing VHDL file "/home/ise/computer/cpu_design/program_rom.vhd" into library work
 Parsing entity <program_rom>.
 Parsing architecture <Behavioral> of entity <program_rom>.
-Parsing VHDL file "/home/ise/computer/cpu_design/program_counter.vhd" into library work
-Parsing entity <program_counter>.
-Parsing architecture <Structural> of entity <program_counter>.
 Parsing VHDL file "/home/ise/computer/cpu_design/instruction_decoder.vhd" into library work
 Parsing entity <instruction_decoder>.
 Parsing architecture <Behavioral> of entity <instruction_decoder>.
 Parsing VHDL file "/home/ise/computer/cpu_design/control_unit.vhd" into library work
 Parsing entity <control_unit>.
 Parsing architecture <Behavioral> of entity <control_unit>.
-Parsing VHDL file "/home/ise/computer/cpu_design/accumulator.vhd" into library work
-Parsing entity <accumulator_8bit>.
-Parsing architecture <Structural> of entity <accumulator_8bit>.
+Parsing VHDL file "/home/ise/computer/cpu_design/alu_8bit.vhd" into library work
+Parsing entity <alu_8bit>.
+Parsing architecture <Structural> of entity <alu_8bit>.
 Parsing VHDL file "/home/ise/computer/cpu_design/cpu_top.vhd" into library work
 Parsing entity <cpu_top>.
 Parsing architecture <Structural> of entity <cpu_top>.
+WARNING:HDLCompiler:946 - "/home/ise/computer/cpu_design/cpu_top.vhd" Line 159: Actual for formal port d is neither a static name nor a globally static expression
 
 =========================================================================
 *                            HDL Elaboration                            *
@@ -169,7 +167,11 @@ Elaborating entity <instruction_decoder> (architecture <Behavioral>) from librar
 
 Elaborating entity <control_unit> (architecture <Behavioral>) from library <work>.
 
-Elaborating entity <accumulator_8bit> (architecture <Structural>) from library <work>.
+Elaborating entity <alu_8bit> (architecture <Structural>) from library <work>.
+
+Elaborating entity <not_gate> (architecture <Structural>) from library <work>.
+
+Elaborating entity <nand_gate> (architecture <Dataflow>) from library <work>.
 
 Elaborating entity <full_adder_8bit> (architecture <Structural>) from library <work>.
 
@@ -179,23 +181,17 @@ Elaborating entity <half_adder> (architecture <Structural>) from library <work>.
 
 Elaborating entity <xor_gate> (architecture <Structural>) from library <work>.
 
-Elaborating entity <nand_gate> (architecture <Dataflow>) from library <work>.
-
 Elaborating entity <and_gate> (architecture <Structural>) from library <work>.
 
 Elaborating entity <or_gate> (architecture <Structural>) from library <work>.
+WARNING:HDLCompiler:92 - "/home/ise/computer/cpu_design/cpu_top.vhd" Line 109: alu_value should be on the sensitivity list of the process
+WARNING:HDLCompiler:1127 - "/home/ise/computer/cpu_design/cpu_top.vhd" Line 119: Assignment to acc_write_en ignored, since the identifier is never used
 
 Elaborating entity <register_8bit> (architecture <Behavioral>) from library <work>.
-WARNING:HDLCompiler:1127 - "/home/ise/computer/cpu_design/cpu_top.vhd" Line 114: Assignment to z_next ignored, since the identifier is never used
 
 Elaborating entity <zero_flag> (architecture <Structural>) from library <work>.
-
-Elaborating entity <not_gate> (architecture <Structural>) from library <work>.
-WARNING:HDLCompiler:92 - "/home/ise/computer/cpu_design/cpu_top.vhd" Line 144: jz_en should be on the sensitivity list of the process
-WARNING:HDLCompiler:1127 - "/home/ise/computer/cpu_design/cpu_top.vhd" Line 137: Assignment to pc_next ignored, since the identifier is never used
-
-Elaborating entity <program_counter> (architecture <Structural>) from library <work>.
-WARNING:Xst:2972 - "/home/ise/computer/cpu_design/cpu_top.vhd" line 61. All outputs of instance <CONTROL_UNIT> of block <control_unit> are unconnected in block <cpu_top>. Underlying logic will be removed.
+WARNING:HDLCompiler:634 - "/home/ise/computer/cpu_design/cpu_top.vhd" Line 23: Net <ALU_VALUE[7]> does not have a driver.
+WARNING:Xst:2972 - "/home/ise/computer/cpu_design/cpu_top.vhd" line 70. All outputs of instance <CONTROL_UNIT> of block <control_unit> are unconnected in block <cpu_top>. Underlying logic will be removed.
 
 =========================================================================
 *                           HDL Synthesis                               *
@@ -203,22 +199,23 @@ WARNING:Xst:2972 - "/home/ise/computer/cpu_design/cpu_top.vhd" line 61. All outp
 
 Synthesizing Unit <cpu_top>.
     Related source file is "/home/ise/computer/cpu_design/cpu_top.vhd".
-INFO:Xst:3210 - "/home/ise/computer/cpu_design/cpu_top.vhd" line 50: Output port <LOAD_EN> of the instance <DECODER_UNIT> is unconnected or connected to loadless signal.
-INFO:Xst:3210 - "/home/ise/computer/cpu_design/cpu_top.vhd" line 50: Output port <ADD_EN> of the instance <DECODER_UNIT> is unconnected or connected to loadless signal.
-INFO:Xst:3210 - "/home/ise/computer/cpu_design/cpu_top.vhd" line 50: Output port <NOT_EN> of the instance <DECODER_UNIT> is unconnected or connected to loadless signal.
-INFO:Xst:3210 - "/home/ise/computer/cpu_design/cpu_top.vhd" line 50: Output port <SHL_EN> of the instance <DECODER_UNIT> is unconnected or connected to loadless signal.
-INFO:Xst:3210 - "/home/ise/computer/cpu_design/cpu_top.vhd" line 50: Output port <JZ_EN> of the instance <DECODER_UNIT> is unconnected or connected to loadless signal.
-INFO:Xst:3210 - "/home/ise/computer/cpu_design/cpu_top.vhd" line 61: Output port <LOAD_EN> of the instance <CONTROL_UNIT> is unconnected or connected to loadless signal.
-INFO:Xst:3210 - "/home/ise/computer/cpu_design/cpu_top.vhd" line 61: Output port <ADD_EN> of the instance <CONTROL_UNIT> is unconnected or connected to loadless signal.
-INFO:Xst:3210 - "/home/ise/computer/cpu_design/cpu_top.vhd" line 61: Output port <NOT_EN> of the instance <CONTROL_UNIT> is unconnected or connected to loadless signal.
-INFO:Xst:3210 - "/home/ise/computer/cpu_design/cpu_top.vhd" line 61: Output port <SHL_EN> of the instance <CONTROL_UNIT> is unconnected or connected to loadless signal.
-INFO:Xst:3210 - "/home/ise/computer/cpu_design/cpu_top.vhd" line 61: Output port <JZ_EN> of the instance <CONTROL_UNIT> is unconnected or connected to loadless signal.
-INFO:Xst:3210 - "/home/ise/computer/cpu_design/cpu_top.vhd" line 61: Output port <PC_RESET> of the instance <CONTROL_UNIT> is unconnected or connected to loadless signal.
-INFO:Xst:3210 - "/home/ise/computer/cpu_design/cpu_top.vhd" line 61: Output port <PC_LOAD> of the instance <CONTROL_UNIT> is unconnected or connected to loadless signal.
-    Found 8-bit adder for signal <ACC_VALUE[7]_OPERAND[7]_add_0_OUT> created at line 86.
+INFO:Xst:3210 - "/home/ise/computer/cpu_design/cpu_top.vhd" line 56: Output port <LOAD_EN> of the instance <DECODER_UNIT> is unconnected or connected to loadless signal.
+INFO:Xst:3210 - "/home/ise/computer/cpu_design/cpu_top.vhd" line 56: Output port <ADD_EN> of the instance <DECODER_UNIT> is unconnected or connected to loadless signal.
+INFO:Xst:3210 - "/home/ise/computer/cpu_design/cpu_top.vhd" line 56: Output port <NOT_EN> of the instance <DECODER_UNIT> is unconnected or connected to loadless signal.
+INFO:Xst:3210 - "/home/ise/computer/cpu_design/cpu_top.vhd" line 56: Output port <SHL_EN> of the instance <DECODER_UNIT> is unconnected or connected to loadless signal.
+INFO:Xst:3210 - "/home/ise/computer/cpu_design/cpu_top.vhd" line 70: Output port <LOAD_EN> of the instance <CONTROL_UNIT> is unconnected or connected to loadless signal.
+INFO:Xst:3210 - "/home/ise/computer/cpu_design/cpu_top.vhd" line 70: Output port <ADD_EN> of the instance <CONTROL_UNIT> is unconnected or connected to loadless signal.
+INFO:Xst:3210 - "/home/ise/computer/cpu_design/cpu_top.vhd" line 70: Output port <NOT_EN> of the instance <CONTROL_UNIT> is unconnected or connected to loadless signal.
+INFO:Xst:3210 - "/home/ise/computer/cpu_design/cpu_top.vhd" line 70: Output port <SHL_EN> of the instance <CONTROL_UNIT> is unconnected or connected to loadless signal.
+INFO:Xst:3210 - "/home/ise/computer/cpu_design/cpu_top.vhd" line 70: Output port <JZ_EN> of the instance <CONTROL_UNIT> is unconnected or connected to loadless signal.
+INFO:Xst:3210 - "/home/ise/computer/cpu_design/cpu_top.vhd" line 70: Output port <PC_RESET> of the instance <CONTROL_UNIT> is unconnected or connected to loadless signal.
+INFO:Xst:3210 - "/home/ise/computer/cpu_design/cpu_top.vhd" line 70: Output port <PC_LOAD> of the instance <CONTROL_UNIT> is unconnected or connected to loadless signal.
+INFO:Xst:3210 - "/home/ise/computer/cpu_design/cpu_top.vhd" line 86: Output port <COUT> of the instance <ALU_UNIT> is unconnected or connected to loadless signal.
+WARNING:Xst:653 - Signal <ALU_VALUE> is used but never assigned. This sourceless signal will be automatically connected to value GND.
+    Found 4-bit adder for signal <PC_VALUE[3]_GND_4_o_add_1_OUT> created at line 1241.
     Summary:
 	inferred   1 Adder/Subtractor(s).
-	inferred  10 Multiplexer(s).
+	inferred  12 Multiplexer(s).
 Unit <cpu_top> synthesized.
 
 Synthesizing Unit <program_rom>.
@@ -234,13 +231,32 @@ Synthesizing Unit <instruction_decoder>.
     Summary:
 	inferred   1 RAM(s).
 Unit <instruction_decoder> synthesized.
+WARNING:Xst:2972 - "/home/ise/computer/cpu_design/alu_8bit.vhd" line 58. All outputs of instance <GEN_NOT_B[0].INV_B> of block <not_gate> are unconnected in block <alu_8bit>. Underlying logic will be removed.
+WARNING:Xst:2972 - "/home/ise/computer/cpu_design/alu_8bit.vhd" line 58. All outputs of instance <GEN_NOT_B[1].INV_B> of block <not_gate> are unconnected in block <alu_8bit>. Underlying logic will be removed.
+WARNING:Xst:2972 - "/home/ise/computer/cpu_design/alu_8bit.vhd" line 58. All outputs of instance <GEN_NOT_B[2].INV_B> of block <not_gate> are unconnected in block <alu_8bit>. Underlying logic will be removed.
+WARNING:Xst:2972 - "/home/ise/computer/cpu_design/alu_8bit.vhd" line 58. All outputs of instance <GEN_NOT_B[3].INV_B> of block <not_gate> are unconnected in block <alu_8bit>. Underlying logic will be removed.
+WARNING:Xst:2972 - "/home/ise/computer/cpu_design/alu_8bit.vhd" line 58. All outputs of instance <GEN_NOT_B[4].INV_B> of block <not_gate> are unconnected in block <alu_8bit>. Underlying logic will be removed.
+WARNING:Xst:2972 - "/home/ise/computer/cpu_design/alu_8bit.vhd" line 58. All outputs of instance <GEN_NOT_B[5].INV_B> of block <not_gate> are unconnected in block <alu_8bit>. Underlying logic will be removed.
+WARNING:Xst:2972 - "/home/ise/computer/cpu_design/alu_8bit.vhd" line 58. All outputs of instance <GEN_NOT_B[6].INV_B> of block <not_gate> are unconnected in block <alu_8bit>. Underlying logic will be removed.
+WARNING:Xst:2972 - "/home/ise/computer/cpu_design/alu_8bit.vhd" line 58. All outputs of instance <GEN_NOT_B[7].INV_B> of block <not_gate> are unconnected in block <alu_8bit>. Underlying logic will be removed.
 
-Synthesizing Unit <accumulator_8bit>.
-    Related source file is "/home/ise/computer/cpu_design/accumulator.vhd".
-INFO:Xst:3210 - "/home/ise/computer/cpu_design/accumulator.vhd" line 37: Output port <COUT> of the instance <ADDER> is unconnected or connected to loadless signal.
+Synthesizing Unit <alu_8bit>.
+    Related source file is "/home/ise/computer/cpu_design/alu_8bit.vhd".
     Summary:
 	no macro.
-Unit <accumulator_8bit> synthesized.
+Unit <alu_8bit> synthesized.
+
+Synthesizing Unit <not_gate>.
+    Related source file is "/home/ise/computer/cpu_design/not_gate.vhd".
+    Summary:
+	no macro.
+Unit <not_gate> synthesized.
+
+Synthesizing Unit <nand_gate>.
+    Related source file is "/home/ise/computer/cpu_design/nand_gate.vhd".
+    Summary:
+	no macro.
+Unit <nand_gate> synthesized.
 
 Synthesizing Unit <full_adder_8bit>.
     Related source file is "/home/ise/computer/cpu_design/full_adder_8bit.vhd".
@@ -265,12 +281,6 @@ Synthesizing Unit <xor_gate>.
     Summary:
 	no macro.
 Unit <xor_gate> synthesized.
-
-Synthesizing Unit <nand_gate>.
-    Related source file is "/home/ise/computer/cpu_design/nand_gate.vhd".
-    Summary:
-	no macro.
-Unit <nand_gate> synthesized.
 
 Synthesizing Unit <and_gate>.
     Related source file is "/home/ise/computer/cpu_design/and_gate.vhd".
@@ -297,19 +307,6 @@ Synthesizing Unit <zero_flag>.
 	no macro.
 Unit <zero_flag> synthesized.
 
-Synthesizing Unit <not_gate>.
-    Related source file is "/home/ise/computer/cpu_design/not_gate.vhd".
-    Summary:
-	no macro.
-Unit <not_gate> synthesized.
-
-Synthesizing Unit <program_counter>.
-    Related source file is "/home/ise/computer/cpu_design/program_counter.vhd".
-INFO:Xst:3210 - "/home/ise/computer/cpu_design/program_counter.vhd" line 36: Output port <COUT> of the instance <INCREMENTER> is unconnected or connected to loadless signal.
-    Summary:
-	no macro.
-Unit <program_counter> synthesized.
-
 =========================================================================
 HDL Synthesis Report
 
@@ -318,10 +315,11 @@ Macro Statistics
  16x12-bit single-port Read Only RAM                   : 1
  16x5-bit single-port Read Only RAM                    : 1
 # Adders/Subtractors                                   : 1
- 8-bit adder                                           : 1
+ 4-bit adder                                           : 1
 # Registers                                            : 2
  8-bit register                                        : 2
-# Multiplexers                                         : 10
+# Multiplexers                                         : 12
+ 4-bit 2-to-1 multiplexer                              : 2
  8-bit 2-to-1 multiplexer                              : 10
 
 =========================================================================
@@ -336,19 +334,15 @@ WARNING:Xst:1290 - Hierarchical block <AND1> is unconnected in block <HA2>.
    It will be removed from the design.
 WARNING:Xst:1290 - Hierarchical block <OR1> is unconnected in block <FA7>.
    It will be removed from the design.
-WARNING:Xst:1290 - Hierarchical block <AND1> is unconnected in block <HA1>.
+WARNING:Xst:1290 - Hierarchical block <INV_CARRY> is unconnected in block <ALU_UNIT>.
    It will be removed from the design.
-WARNING:Xst:1290 - Hierarchical block <AND1> is unconnected in block <HA2>.
+WARNING:Xst:1290 - Hierarchical block <AND_ADD> is unconnected in block <ALU_UNIT>.
    It will be removed from the design.
-WARNING:Xst:1290 - Hierarchical block <OR1> is unconnected in block <FA7>.
+WARNING:Xst:1290 - Hierarchical block <AND_SUB> is unconnected in block <ALU_UNIT>.
    It will be removed from the design.
-WARNING:Xst:1290 - Hierarchical block <NAND1> is unconnected in block <XOR1>.
+WARNING:Xst:1290 - Hierarchical block <OR_FLAG> is unconnected in block <ALU_UNIT>.
    It will be removed from the design.
-WARNING:Xst:1290 - Hierarchical block <NAND3> is unconnected in block <XOR1>.
-   It will be removed from the design.
-WARNING:Xst:1290 - Hierarchical block <AND1> is unconnected in block <HA2>.
-   It will be removed from the design.
-WARNING:Xst:1290 - Hierarchical block <NAND2> is unconnected in block <OR1>.
+WARNING:Xst:1290 - Hierarchical block <INV_OP> is unconnected in block <ALU_UNIT>.
    It will be removed from the design.
 WARNING:Xst:1290 - Hierarchical block <NAND1> is unconnected in block <XOR1>.
    It will be removed from the design.
@@ -358,74 +352,10 @@ WARNING:Xst:1290 - Hierarchical block <AND1> is unconnected in block <HA2>.
    It will be removed from the design.
 WARNING:Xst:1290 - Hierarchical block <NAND2> is unconnected in block <OR1>.
    It will be removed from the design.
-WARNING:Xst:1290 - Hierarchical block <NAND1> is unconnected in block <XOR1>.
-   It will be removed from the design.
-WARNING:Xst:1290 - Hierarchical block <NAND3> is unconnected in block <XOR1>.
-   It will be removed from the design.
-WARNING:Xst:1290 - Hierarchical block <AND1> is unconnected in block <HA1>.
-   It will be removed from the design.
-WARNING:Xst:1290 - Hierarchical block <NAND1> is unconnected in block <OR1>.
-   It will be removed from the design.
-WARNING:Xst:1290 - Hierarchical block <NAND1> is unconnected in block <XOR1>.
-   It will be removed from the design.
-WARNING:Xst:1290 - Hierarchical block <NAND3> is unconnected in block <XOR1>.
-   It will be removed from the design.
-WARNING:Xst:1290 - Hierarchical block <AND1> is unconnected in block <HA1>.
-   It will be removed from the design.
-WARNING:Xst:1290 - Hierarchical block <NAND1> is unconnected in block <OR1>.
-   It will be removed from the design.
-WARNING:Xst:1290 - Hierarchical block <NAND1> is unconnected in block <XOR1>.
-   It will be removed from the design.
-WARNING:Xst:1290 - Hierarchical block <NAND3> is unconnected in block <XOR1>.
-   It will be removed from the design.
-WARNING:Xst:1290 - Hierarchical block <AND1> is unconnected in block <HA1>.
-   It will be removed from the design.
-WARNING:Xst:1290 - Hierarchical block <NAND1> is unconnected in block <OR1>.
-   It will be removed from the design.
-WARNING:Xst:1290 - Hierarchical block <NAND1> is unconnected in block <XOR1>.
-   It will be removed from the design.
-WARNING:Xst:1290 - Hierarchical block <NAND3> is unconnected in block <XOR1>.
-   It will be removed from the design.
-WARNING:Xst:1290 - Hierarchical block <AND1> is unconnected in block <HA1>.
-   It will be removed from the design.
-WARNING:Xst:1290 - Hierarchical block <NAND1> is unconnected in block <OR1>.
-   It will be removed from the design.
-WARNING:Xst:1290 - Hierarchical block <NAND1> is unconnected in block <XOR1>.
-   It will be removed from the design.
-WARNING:Xst:1290 - Hierarchical block <NAND3> is unconnected in block <XOR1>.
-   It will be removed from the design.
-WARNING:Xst:1290 - Hierarchical block <AND1> is unconnected in block <HA1>.
-   It will be removed from the design.
-WARNING:Xst:1290 - Hierarchical block <NAND1> is unconnected in block <OR1>.
-   It will be removed from the design.
-WARNING:Xst:1290 - Hierarchical block <NAND1> is unconnected in block <XOR1>.
-   It will be removed from the design.
-WARNING:Xst:1290 - Hierarchical block <NAND3> is unconnected in block <XOR1>.
-   It will be removed from the design.
-WARNING:Xst:1290 - Hierarchical block <AND1> is unconnected in block <HA1>.
-   It will be removed from the design.
-WARNING:Xst:1290 - Hierarchical block <NAND1> is unconnected in block <OR1>.
-   It will be removed from the design.
-WARNING:Xst:1290 - Hierarchical block <NAND1> is unconnected in block <XOR1>.
-   It will be removed from the design.
-WARNING:Xst:1290 - Hierarchical block <NAND3> is unconnected in block <XOR1>.
-   It will be removed from the design.
-WARNING:Xst:2677 - Node <REG_DATA_4> of sequential type is unconnected in block <PC_REGISTER>.
-WARNING:Xst:2677 - Node <REG_DATA_5> of sequential type is unconnected in block <PC_REGISTER>.
-WARNING:Xst:2677 - Node <REG_DATA_6> of sequential type is unconnected in block <PC_REGISTER>.
-WARNING:Xst:2677 - Node <REG_DATA_7> of sequential type is unconnected in block <PC_REGISTER>.
-WARNING:Xst:1290 - Hierarchical block <AND1> is unconnected in block <HA2>.
-   It will be removed from the design.
-WARNING:Xst:1290 - Hierarchical block <OR1> is unconnected in block <FA3>.
-   It will be removed from the design.
-WARNING:Xst:1290 - Hierarchical block <FA4> is unconnected in block <INCREMENTER>.
-   It will be removed from the design.
-WARNING:Xst:1290 - Hierarchical block <FA5> is unconnected in block <INCREMENTER>.
-   It will be removed from the design.
-WARNING:Xst:1290 - Hierarchical block <FA6> is unconnected in block <INCREMENTER>.
-   It will be removed from the design.
-WARNING:Xst:1290 - Hierarchical block <FA7> is unconnected in block <INCREMENTER>.
-   It will be removed from the design.
+WARNING:Xst:2677 - Node <REG_DATA_4> of sequential type is unconnected in block <PC_UNIT>.
+WARNING:Xst:2677 - Node <REG_DATA_5> of sequential type is unconnected in block <PC_UNIT>.
+WARNING:Xst:2677 - Node <REG_DATA_6> of sequential type is unconnected in block <PC_UNIT>.
+WARNING:Xst:2677 - Node <REG_DATA_7> of sequential type is unconnected in block <PC_UNIT>.
 
 Synthesizing (advanced) Unit <instruction_decoder>.
 INFO:Xst:3218 - HDL ADVISOR - The RAM <Mram__n0026> will be implemented on LUTs either because you have described an asynchronous read or because of currently unsupported block RAM features. If you have described an asynchronous read, making it synchronous would allow you to take advantage of available block RAM resources, for optimized device usage and improved timings. Please refer to your documentation for coding guidelines.
@@ -463,10 +393,11 @@ Macro Statistics
  16x12-bit single-port distributed Read Only RAM       : 1
  16x5-bit single-port distributed Read Only RAM        : 1
 # Adders/Subtractors                                   : 1
- 8-bit adder                                           : 1
+ 4-bit adder                                           : 1
 # Registers                                            : 16
  Flip-Flops                                            : 16
-# Multiplexers                                         : 10
+# Multiplexers                                         : 12
+ 4-bit 2-to-1 multiplexer                              : 2
  8-bit 2-to-1 multiplexer                              : 10
 
 =========================================================================
@@ -480,15 +411,17 @@ Optimizing unit <register_8bit> ...
 Optimizing unit <cpu_top> ...
 
 Optimizing unit <full_adder_8bit> ...
-WARNING:Xst:2677 - Node <PC_UNIT/PC_REGISTER/REG_DATA_7> of sequential type is unconnected in block <cpu_top>.
-WARNING:Xst:2677 - Node <PC_UNIT/PC_REGISTER/REG_DATA_6> of sequential type is unconnected in block <cpu_top>.
-WARNING:Xst:2677 - Node <PC_UNIT/PC_REGISTER/REG_DATA_5> of sequential type is unconnected in block <cpu_top>.
-WARNING:Xst:2677 - Node <PC_UNIT/PC_REGISTER/REG_DATA_4> of sequential type is unconnected in block <cpu_top>.
+WARNING:Xst:2677 - Node <PC_UNIT/REG_DATA_7> of sequential type is unconnected in block <cpu_top>.
+WARNING:Xst:2677 - Node <PC_UNIT/REG_DATA_6> of sequential type is unconnected in block <cpu_top>.
+WARNING:Xst:2677 - Node <PC_UNIT/REG_DATA_5> of sequential type is unconnected in block <cpu_top>.
+WARNING:Xst:2677 - Node <PC_UNIT/REG_DATA_4> of sequential type is unconnected in block <cpu_top>.
 
 Mapping all equations...
 Building and optimizing final netlist ...
 Found area constraint ratio of 100 (+ 5) on block cpu_top, actual ratio is 0.
-FlipFlop PC_UNIT/PC_REGISTER/REG_DATA_1 has been replicated 1 time(s)
+FlipFlop PC_UNIT/REG_DATA_0 has been replicated 1 time(s)
+FlipFlop PC_UNIT/REG_DATA_1 has been replicated 1 time(s)
+FlipFlop PC_UNIT/REG_DATA_2 has been replicated 1 time(s)
 
 Final Macro Processing ...
 
@@ -496,8 +429,8 @@ Final Macro Processing ...
 Final Register Report
 
 Macro Statistics
-# Registers                                            : 13
- Flip-Flops                                            : 13
+# Registers                                            : 15
+ Flip-Flops                                            : 15
 
 =========================================================================
 
@@ -520,19 +453,16 @@ Top Level Output File Name         : cpu_top.ngc
 
 Primitive and Black Box Usage:
 ------------------------------
-# BELS                             : 74
-#      GND                         : 1
-#      INV                         : 1
-#      LUT2                        : 1
-#      LUT3                        : 4
-#      LUT4                        : 1
-#      LUT5                        : 24
-#      LUT6                        : 26
-#      MUXCY                       : 7
-#      MUXF7                       : 1
-#      XORCY                       : 8
-# FlipFlops/Latches                : 13
-#      FDR                         : 13
+# BELS                             : 53
+#      LUT2                        : 2
+#      LUT3                        : 1
+#      LUT4                        : 8
+#      LUT5                        : 7
+#      LUT6                        : 31
+#      MUXF7                       : 3
+#      VCC                         : 1
+# FlipFlops/Latches                : 15
+#      FDR                         : 15
 # Clock Buffers                    : 1
 #      BUFGP                       : 1
 # IO Buffers                       : 14
@@ -546,15 +476,15 @@ Selected Device : 7a100tcsg324-3
 
 
 Slice Logic Utilization: 
- Number of Slice Registers:              13  out of  126800     0%  
- Number of Slice LUTs:                   57  out of  63400     0%  
-    Number used as Logic:                57  out of  63400     0%  
+ Number of Slice Registers:              15  out of  126800     0%  
+ Number of Slice LUTs:                   49  out of  63400     0%  
+    Number used as Logic:                49  out of  63400     0%  
 
 Slice Logic Distribution: 
- Number of LUT Flip Flop pairs used:     58
-   Number with an unused Flip Flop:      45  out of     58    77%  
-   Number with an unused LUT:             1  out of     58     1%  
-   Number of fully used LUT-FF pairs:    12  out of     58    20%  
+ Number of LUT Flip Flop pairs used:     52
+   Number with an unused Flip Flop:      37  out of     52    71%  
+   Number with an unused LUT:             3  out of     52     5%  
+   Number of fully used LUT-FF pairs:    12  out of     52    23%  
    Number of unique control sets:         1
 
 IO Utilization: 
@@ -585,7 +515,7 @@ Clock Information:
 -----------------------------------+------------------------+-------+
 Clock Signal                       | Clock buffer(FF name)  | Load  |
 -----------------------------------+------------------------+-------+
-CLK                                | BUFGP                  | 13    |
+CLK                                | BUFGP                  | 15    |
 -----------------------------------+------------------------+-------+
 
 Asynchronous Control Signals Information:
@@ -596,9 +526,9 @@ Timing Summary:
 ---------------
 Speed Grade: -3
 
-   Minimum period: 3.483ns (Maximum Frequency: 287.134MHz)
-   Minimum input arrival time before clock: 0.685ns
-   Maximum output required time after clock: 1.709ns
+   Minimum period: 2.172ns (Maximum Frequency: 460.412MHz)
+   Minimum input arrival time before clock: 0.883ns
+   Maximum output required time after clock: 1.701ns
    Maximum combinational path delay: No path found
 
 Timing Details:
@@ -607,72 +537,68 @@ All values displayed in nanoseconds (ns)
 
 =========================================================================
 Timing constraint: Default period analysis for Clock 'CLK'
-  Clock period: 3.483ns (frequency: 287.134MHz)
-  Total number of paths / destination ports: 1504 / 13
+  Clock period: 2.172ns (frequency: 460.412MHz)
+  Total number of paths / destination ports: 320 / 15
 -------------------------------------------------------------------------
-Delay:               3.483ns (Levels of Logic = 8)
-  Source:            ACC_UNIT/ACC_REGISTER/REG_DATA_2 (FF)
-  Destination:       ACC_UNIT/ACC_REGISTER/REG_DATA_7 (FF)
+Delay:               2.172ns (Levels of Logic = 3)
+  Source:            PC_UNIT/REG_DATA_3 (FF)
+  Destination:       ACC_UNIT/REG_DATA_7 (FF)
   Source Clock:      CLK rising
   Destination Clock: CLK rising
 
-  Data Path: ACC_UNIT/ACC_REGISTER/REG_DATA_2 to ACC_UNIT/ACC_REGISTER/REG_DATA_7
+  Data Path: PC_UNIT/REG_DATA_3 to ACC_UNIT/REG_DATA_7
                                 Gate     Net
     Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
     ----------------------------------------  ------------
-     FDR:C->Q             15   0.361   0.748  ACC_UNIT/ACC_REGISTER/REG_DATA_2 (ACC_UNIT/ACC_REGISTER/REG_DATA_2)
-     LUT5:I0->O            1   0.097   0.000  Madd_ACC_VALUE[7]_OPERAND[7]_add_0_OUT_lut<2> (Madd_ACC_VALUE[7]_OPERAND[7]_add_0_OUT_lut<2>)
-     MUXCY:S->O            1   0.353   0.000  Madd_ACC_VALUE[7]_OPERAND[7]_add_0_OUT_cy<2> (Madd_ACC_VALUE[7]_OPERAND[7]_add_0_OUT_cy<2>)
-     MUXCY:CI->O           1   0.023   0.000  Madd_ACC_VALUE[7]_OPERAND[7]_add_0_OUT_cy<3> (Madd_ACC_VALUE[7]_OPERAND[7]_add_0_OUT_cy<3>)
-     MUXCY:CI->O           1   0.023   0.000  Madd_ACC_VALUE[7]_OPERAND[7]_add_0_OUT_cy<4> (Madd_ACC_VALUE[7]_OPERAND[7]_add_0_OUT_cy<4>)
-     XORCY:CI->O           2   0.370   0.299  Madd_ACC_VALUE[7]_OPERAND[7]_add_0_OUT_xor<5> (ACC_VALUE[7]_OPERAND[7]_add_0_OUT<5>)
-     LUT5:I4->O            5   0.097   0.398  Mmux_ACC_NEXT123 (ACC_NEXT<5>)
-     LUT5:I3->O            1   0.097   0.511  ACC_UNIT/ADDER/FA7/HA2/XOR1/NAND4/Y1_SW0_SW0 (N21)
-     LUT6:I3->O            1   0.097   0.000  ACC_UNIT/ADDER/FA7/HA2/XOR1/NAND4/Y1 (ACC_UNIT/SUM_VALUE<7>)
-     FDR:D                     0.008          ACC_UNIT/ACC_REGISTER/REG_DATA_7
+     FDR:C->Q             30   0.361   0.800  PC_UNIT/REG_DATA_3 (PC_UNIT/REG_DATA_3)
+     LUT6:I0->O            1   0.097   0.000  ALU_UNIT/ADDER/FA3/HA2/XOR1/NAND4/Y21_G (N69)
+     MUXF7:I1->O           5   0.279   0.530  ALU_UNIT/ADDER/FA3/HA2/XOR1/NAND4/Y21 (ALU_UNIT/ADDER/FA3/HA2/XOR1/NAND4/Y2)
+     LUT5:I2->O            1   0.097   0.000  Mmux_ACC_NEXT83 (ACC_NEXT<7>)
+     FDR:D                     0.008          ACC_UNIT/REG_DATA_7
     ----------------------------------------
-    Total                      3.483ns (1.526ns logic, 1.957ns route)
-                                       (43.8% logic, 56.2% route)
+    Total                      2.172ns (0.842ns logic, 1.330ns route)
+                                       (38.8% logic, 61.2% route)
 
 =========================================================================
 Timing constraint: Default OFFSET IN BEFORE for Clock 'CLK'
-  Total number of paths / destination ports: 13 / 13
+  Total number of paths / destination ports: 22 / 22
 -------------------------------------------------------------------------
-Offset:              0.685ns (Levels of Logic = 1)
+Offset:              0.883ns (Levels of Logic = 2)
   Source:            RESET (PAD)
-  Destination:       PC_UNIT/PC_REGISTER/REG_DATA_3 (FF)
+  Destination:       PC_UNIT/REG_DATA_3 (FF)
   Destination Clock: CLK rising
 
-  Data Path: RESET to PC_UNIT/PC_REGISTER/REG_DATA_3
+  Data Path: RESET to PC_UNIT/REG_DATA_3
                                 Gate     Net
     Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
     ----------------------------------------  ------------
-     IBUF:I->O            13   0.001   0.335  RESET_IBUF (RESET_IBUF)
-     FDR:R                     0.349          PC_UNIT/PC_REGISTER/REG_DATA_0
+     IBUF:I->O            19   0.001   0.777  RESET_IBUF (RESET_IBUF)
+     LUT6:I0->O            2   0.097   0.000  Mmux_PC_NEXT31 (PC_NEXT<2>)
+     FDR:D                     0.008          PC_UNIT/REG_DATA_2
     ----------------------------------------
-    Total                      0.685ns (0.350ns logic, 0.335ns route)
-                                       (51.1% logic, 48.9% route)
+    Total                      0.883ns (0.106ns logic, 0.777ns route)
+                                       (12.0% logic, 88.0% route)
 
 =========================================================================
 Timing constraint: Default OFFSET OUT AFTER for Clock 'CLK'
   Total number of paths / destination ports: 20 / 13
 -------------------------------------------------------------------------
-Offset:              1.709ns (Levels of Logic = 3)
-  Source:            ACC_UNIT/ACC_REGISTER/REG_DATA_5 (FF)
+Offset:              1.701ns (Levels of Logic = 3)
+  Source:            ACC_UNIT/REG_DATA_0 (FF)
   Destination:       Z (PAD)
   Source Clock:      CLK rising
 
-  Data Path: ACC_UNIT/ACC_REGISTER/REG_DATA_5 to Z
+  Data Path: ACC_UNIT/REG_DATA_0 to Z
                                 Gate     Net
     Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
     ----------------------------------------  ------------
-     FDR:C->Q             16   0.361   0.580  ACC_UNIT/ACC_REGISTER/REG_DATA_5 (ACC_UNIT/ACC_REGISTER/REG_DATA_5)
-     LUT3:I0->O            1   0.097   0.295  ZERO_UNIT/AND7/NAND1/n0000_SW0 (N01)
+     FDR:C->Q             11   0.361   0.558  ACC_UNIT/REG_DATA_0 (ACC_UNIT/REG_DATA_0)
+     LUT3:I0->O            4   0.097   0.309  ZERO_UNIT/AND7/NAND1/n0000_SW0 (N3)
      LUT6:I5->O            1   0.097   0.279  ZERO_UNIT/AND7/NAND1/n0000 (Z_OBUF)
      OBUF:I->O                 0.000          Z_OBUF (Z)
     ----------------------------------------
-    Total                      1.709ns (0.555ns logic, 1.155ns route)
-                                       (32.5% logic, 67.5% route)
+    Total                      1.701ns (0.555ns logic, 1.146ns route)
+                                       (32.6% logic, 67.4% route)
 
 =========================================================================
 
@@ -684,21 +610,21 @@ Clock to Setup on destination clock CLK
                | Src:Rise| Src:Fall| Src:Rise| Src:Fall|
 Source Clock   |Dest:Rise|Dest:Rise|Dest:Fall|Dest:Fall|
 ---------------+---------+---------+---------+---------+
-CLK            |    3.483|         |         |         |
+CLK            |    2.172|         |         |         |
 ---------------+---------+---------+---------+---------+
 
 =========================================================================
 
 
-Total REAL time to Xst completion: 11.00 secs
-Total CPU time to Xst completion: 9.29 secs
+Total REAL time to Xst completion: 10.00 secs
+Total CPU time to Xst completion: 9.04 secs
  
 --> 
 
 
-Total memory usage is 603768 kilobytes
+Total memory usage is 603772 kilobytes
 
 Number of errors   :    0 (   0 filtered)
-Number of warnings :   58 (   0 filtered)
-Number of infos    :   16 (   0 filtered)
+Number of warnings :   34 (   0 filtered)
+Number of infos    :   14 (   0 filtered)
 

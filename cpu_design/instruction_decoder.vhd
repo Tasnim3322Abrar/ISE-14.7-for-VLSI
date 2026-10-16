@@ -29,22 +29,22 @@ begin
         case INSTRUCTION(11 downto 8) is
 
             when "0001" =>
-                LOAD_EN <= '1';
+                LOAD_EN <= '1'; -- LDI
 
             when "0010" =>
-                ADD_EN <= '1';
+                ADD_EN <= '1';  -- ADD
 
             when "0111" =>
-                NOT_EN <= '1';
-
+                NOT_EN <= '1';  -- NOT
             when "1000" =>
-                SHL_EN <= '1';
+                SHL_EN <= '1';  -- SHL
 
             when "1100" =>
-                JZ_EN <= '1';
+                JZ_EN <= '1';   -- JZ
 
             when others =>
-                null;
+                null;           -- NOP
+
         end case;
     end process;
 

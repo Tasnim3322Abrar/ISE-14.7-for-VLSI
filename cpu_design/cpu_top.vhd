@@ -1,3 +1,4 @@
+
 library IEEE;
 use IEEE.STD_LOGIC_1164.ALL;
 use IEEE.NUMERIC_STD.ALL;
@@ -15,27 +16,32 @@ architecture Structural of cpu_top is
 
     signal PC_VALUE      : STD_LOGIC_VECTOR(3 downto 0);
     signal PC_NEXT       : STD_LOGIC_VECTOR(3 downto 0);
+	 signal PC_REG_Q      : STD_LOGIC_VECTOR(7 downto 0);
 
+	 signal ACC_NEXT      : STD_LOGIC_VECTOR(7 downto 0);
     signal ACC_VALUE     : STD_LOGIC_VECTOR(7 downto 0);
-    signal ACC_NEXT      : STD_LOGIC_VECTOR(7 downto 0);
-
+	 signal ALU_VALUE		 : STD_LOGIC_VECTOR(7 downto 0);
     signal INSTRUCTION   : STD_LOGIC_VECTOR(11 downto 0);
     signal OPCODE        : STD_LOGIC_VECTOR(3 downto 0);
     signal OPERAND       : STD_LOGIC_VECTOR(7 downto 0);
+
     signal LOAD_EN       : STD_LOGIC;
     signal ADD_EN        : STD_LOGIC;
     signal NOT_EN        : STD_LOGIC;
     signal SHL_EN        : STD_LOGIC;
     signal JZ_EN         : STD_LOGIC;
-
     signal PC_RESET      : STD_LOGIC;
     signal PC_LOAD       : STD_LOGIC;
 
     signal ACC_WRITE_EN  : STD_LOGIC;
     signal Z_VALUE       : STD_LOGIC;
     signal Z_NEXT        : STD_LOGIC;
-begin
+	 
+    -- ALU signals
+    signal ALU_RESULT    : STD_LOGIC_VECTOR(7 downto 0);
+    signal ALU_COUT      : STD_LOGIC;
 
+begin
     --------------------------------------------------
     -- 1. Program ROM
     --------------------------------------------------
@@ -58,6 +64,9 @@ begin
             SHL_EN      => SHL_EN,
             JZ_EN       => JZ_EN
         );
+    --------------------------------------------------
+    -- 3. Control Unit
+    --------------------------------------------------
     CONTROL_UNIT : entity work.control_unit
         port map (
             CLK         => CLK,
@@ -72,90 +81,89 @@ begin
             PC_LOAD     => PC_LOAD
         );
     --------------------------------------------------
-    -- 4. ALU next-value logic
+    -- 4. ALU
     --------------------------------------------------
-    process(ACC_VALUE, OPERAND, OPCODE)
+    ALU_UNIT : entity work.alu_8bit
+        port map (
+            A      => ACC_VALUE,
+            B      => OPERAND,
+            OP     => '0',
+            RESULT => ALU_RESULT,
+            COUT   => ALU_COUT
+        );
+    --------------------------------------------------
+    -- 5. Accumulator next-value logic
+    --------------------------------------------------
+    process(ACC_VALUE, OPERAND, OPCODE, ALU_RESULT)
     begin
+        -- Default: preserve current accumulator
         ACC_NEXT <= ACC_VALUE;
 
         case OPCODE is
             when "0001" =>
-                ACC_NEXT <= OPERAND; -- LDI
-            when "0010" =>
-                ACC_NEXT <= std_logic_vector(
-                    unsigned(ACC_VALUE) + unsigned(OPERAND)
-                ); -- ADD
+                ACC_NEXT <= OPERAND;     -- LDI
 
+            when "0010" =>
+                ACC_NEXT <= ALU_RESULT;  -- ADD
             when "0111" =>
-                ACC_NEXT <= not ACC_VALUE; -- NOT
+                ACC_NEXT <= ALU_VALUE;  -- NOT
 
             when "1000" =>
-                ACC_NEXT <= ACC_VALUE(6 downto 0) & '0'; -- SHL
+                ACC_NEXT <= ACC_VALUE(6 downto 0) & '0';  -- SHL
 
             when others =>
-                ACC_NEXT <= ACC_VALUE;
+                ACC_NEXT <= ACC_VALUE;   -- JZ or NOP
         end case;
     end process;
+
     ACC_WRITE_EN <= LOAD_EN or ADD_EN or NOT_EN or SHL_EN;
-
     --------------------------------------------------
-    -- 5. Accumulator
+    -- 6. Accumulator
     --------------------------------------------------
-    ACC_UNIT : entity work.accumulator_8bit
-		 port map (
-			  CLK   => CLK,
-			  RESET => RESET,
-			  D     => ACC_NEXT,
-			  Q     => ACC_VALUE
-		 );
-    --------------------------------------------------
-    -- 6. Zero Flag next-value logic
-    --------------------------------------------------
-    process(ACC_NEXT, ACC_WRITE_EN, Z_VALUE)
-    begin
-        Z_NEXT <= Z_VALUE;
-
-        if ACC_WRITE_EN = '1' then
-            if ACC_NEXT = x"00" then
-                Z_NEXT <= '1';
-            else
-                Z_NEXT <= '0';
-            end if;
-        end if;
-    end process;
+    ACC_UNIT : entity work.register_8bit
+        port map (
+            D     => ACC_NEXT,
+            CLK   => CLK,
+            RESET => RESET,
+            Q     => ACC_VALUE
+        );
     --------------------------------------------------
     -- 7. Zero Flag
     --------------------------------------------------
     ZERO_UNIT : entity work.zero_flag
-		 port map (
-			  A    => ACC_VALUE,
-			  ZERO => Z_VALUE
-		 );
-	 ---------------------------------------------
+        port map (
+            A    => ACC_VALUE,
+            ZERO => Z_VALUE
+        );
+    --------------------------------------------------
     -- 8. Program Counter next-value logic
     --------------------------------------------------
-    process(PC_VALUE, OPERAND, PC_LOAD, PC_RESET, Z_VALUE)
+    process(PC_VALUE, OPERAND, JZ_EN, Z_VALUE, RESET)
     begin
+        -- Normal instruction: move to next address
         PC_NEXT <= std_logic_vector(unsigned(PC_VALUE) + 1);
-
-        if PC_RESET = '1' then
+        if RESET = '1' then
             PC_NEXT <= (others => '0');
 
-        elsif PC_LOAD = '1' and JZ_EN = '1' and Z_VALUE = '1' then
+        elsif JZ_EN = '1' and Z_VALUE = '1' then
+            -- JZ: jump only when zero flag is set
             PC_NEXT <= OPERAND(3 downto 0);
+
         end if;
     end process;
     --------------------------------------------------
     -- 9. Program Counter
     --------------------------------------------------
-    PC_UNIT : entity work.program_counter
-		 port map (
-			  CLK   => CLK,
-			  RESET => RESET,
-			  PC    => PC_VALUE
-		 );
+    PC_UNIT : entity work.register_8bit
+        port map (
+            D     => "0000" & PC_NEXT,
+            CLK   => CLK,
+            RESET => RESET,
+            Q     => PC_REG_Q
+        );
+    PC_VALUE <= PC_REG_Q(3 downto 0);
     --------------------------------------------------
-    -- Outputs
+    -- 10. Outputs
     --------------------------------------------------
     Q  <= ACC_VALUE;
     Z  <= Z_VALUE;
