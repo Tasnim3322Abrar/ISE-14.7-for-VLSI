@@ -20,3 +20,4 @@ xst -intstyle ise -ifn "/home/ise/computer/cpu_design/cpu_top.xst" -ofn "/home/i
 xst -intstyle ise -ifn "/home/ise/computer/cpu_design/cpu_top.xst" -ofn "/home/ise/computer/cpu_design/cpu_top.syr" 
 xst -intstyle ise -ifn "/home/ise/computer/cpu_design/cpu_top.xst" -ofn "/home/ise/computer/cpu_design/cpu_top.syr" 
 xst -intstyle ise -ifn "/home/ise/computer/cpu_design/cpu_top.xst" -ofn "/home/ise/computer/cpu_design/cpu_top.syr" 
+xst -intstyle ise -ifn "/home/ise/computer/cpu_design/cpu_top.xst" -ofn "/home/ise/computer/cpu_design/cpu_top.syr" 

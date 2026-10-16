@@ -5,14 +5,14 @@ Parameter TMPDIR set to xst/projnav.tmp
 
 
 Total REAL time to Xst completion: 0.00 secs
-Total CPU time to Xst completion: 0.03 secs
+Total CPU time to Xst completion: 0.04 secs
  
 --> 
 Parameter xsthdpdir set to xst
 
 
 Total REAL time to Xst completion: 0.00 secs
-Total CPU time to Xst completion: 0.03 secs
+Total CPU time to Xst completion: 0.04 secs
  
 --> 
 Reading design: register_8bit.prj
@@ -310,8 +310,8 @@ Cross Clock Domains Report:
 =========================================================================
 
 
-Total REAL time to Xst completion: 10.00 secs
-Total CPU time to Xst completion: 9.01 secs
+Total REAL time to Xst completion: 9.00 secs
+Total CPU time to Xst completion: 8.27 secs
  
 --> 
 

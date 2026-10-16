@@ -5,14 +5,14 @@ Parameter TMPDIR set to xst/projnav.tmp
 
 
 Total REAL time to Xst completion: 0.00 secs
-Total CPU time to Xst completion: 0.03 secs
+Total CPU time to Xst completion: 0.04 secs
  
 --> 
 Parameter xsthdpdir set to xst
 
 
 Total REAL time to Xst completion: 0.00 secs
-Total CPU time to Xst completion: 0.03 secs
+Total CPU time to Xst completion: 0.04 secs
  
 --> 
 Reading design: accumulator_8bit.prj
@@ -164,7 +164,7 @@ Elaborating entity <register_8bit> (architecture <Behavioral>) from library <wor
 
 Synthesizing Unit <accumulator_8bit>.
     Related source file is "/home/ise/computer/cpu_design/accumulator.vhd".
-INFO:Xst:3210 - "/home/ise/computer/cpu_design/accumulator.vhd" line 37: Output port <COUT> of the instance <ADDER> is unconnected or connected to loadless signal.
+INFO:Xst:3210 - "/home/ise/computer/cpu_design/accumulator.vhd" line 38: Output port <COUT> of the instance <ADDER> is unconnected or connected to loadless signal.
     Summary:
 	no macro.
 Unit <accumulator_8bit> synthesized.
@@ -459,7 +459,7 @@ CLK            |    1.600|         |         |         |
 
 
 Total REAL time to Xst completion: 9.00 secs
-Total CPU time to Xst completion: 8.87 secs
+Total CPU time to Xst completion: 8.52 secs
  
 --> 
 

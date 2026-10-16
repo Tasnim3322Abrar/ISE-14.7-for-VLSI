@@ -1,12 +1,12 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <report-views version="2.0" >
  <header>
-  <DateModified>2026-10-16T16:21:08</DateModified>
+  <DateModified>2026-10-16T19:29:24</DateModified>
   <ModuleName>cpu_top</ModuleName>
-  <SummaryTimeStamp>2026-10-16T16:10:49</SummaryTimeStamp>
+  <SummaryTimeStamp>2026-10-16T19:28:52</SummaryTimeStamp>
   <SavedFilePath>/home/ise/computer/cpu_design/iseconfig/cpu_top.xreport</SavedFilePath>
   <ImplementationReportsDirectory>/home/ise/computer/cpu_design/</ImplementationReportsDirectory>
-  <DateInitialized>2026-10-16T15:34:37</DateInitialized>
+  <DateInitialized>2026-10-16T19:29:24</DateInitialized>
   <EnableMessageFiltering>false</EnableMessageFiltering>
  </header>
  <body>

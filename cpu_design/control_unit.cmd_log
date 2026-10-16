@@ -1,0 +1,1 @@
+xst -intstyle ise -ifn "/home/ise/computer/cpu_design/control_unit.xst" -ofn "/home/ise/computer/cpu_design/control_unit.syr" 

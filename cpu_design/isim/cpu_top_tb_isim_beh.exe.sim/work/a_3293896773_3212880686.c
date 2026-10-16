@@ -151,7 +151,7 @@ LAB12:    t18 = (t0 + 6116);
         goto LAB7;
 
 LAB13:
-LAB8:    xsi_set_current_line(47, ng0);
+LAB8:    xsi_set_current_line(46, ng0);
 
 LAB2:    t1 = (t0 + 3624);
     *((int *)t1) = 1;
@@ -187,7 +187,7 @@ LAB5:    xsi_set_current_line(38, ng0);
     xsi_driver_first_trans_fast_port(t1);
     goto LAB2;
 
-LAB6:    xsi_set_current_line(41, ng0);
+LAB6:    xsi_set_current_line(40, ng0);
     t1 = (t0 + 4024);
     t2 = (t1 + 56U);
     t6 = *((char **)t2);
@@ -197,7 +197,7 @@ LAB6:    xsi_set_current_line(41, ng0);
     xsi_driver_first_trans_fast_port(t1);
     goto LAB2;
 
-LAB7:    xsi_set_current_line(44, ng0);
+LAB7:    xsi_set_current_line(43, ng0);
     t1 = (t0 + 4088);
     t2 = (t1 + 56U);
     t6 = *((char **)t2);

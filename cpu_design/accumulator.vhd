@@ -1,3 +1,4 @@
+
 library IEEE;
 use IEEE.STD_LOGIC_1164.ALL;
 
@@ -28,12 +29,12 @@ architecture Structural of accumulator_8bit is
             Q     : out STD_LOGIC_VECTOR(7 downto 0)
         );
     end component;
+    signal ACC_VALUE  : STD_LOGIC_VECTOR(7 downto 0);
+    signal SUM_VALUE  : STD_LOGIC_VECTOR(7 downto 0);
+    signal CARRY_OUT  : STD_LOGIC;
 
-    signal SUM_VALUE : STD_LOGIC_VECTOR(7 downto 0);
-    signal ACC_VALUE : STD_LOGIC_VECTOR(7 downto 0);
-    signal CARRY_OUT : STD_LOGIC;
 begin
-
+    -- Add the current accumulator value and new input
     ADDER: full_adder_8bit
         port map (
             A    => ACC_VALUE,
@@ -42,7 +43,7 @@ begin
             SUM  => SUM_VALUE,
             COUT => CARRY_OUT
         );
-
+    -- Store the sum on the rising clock edge
     ACC_REGISTER: register_8bit
         port map (
             D     => SUM_VALUE,
@@ -51,6 +52,7 @@ begin
             Q     => ACC_VALUE
         );
 
+    -- Display the current accumulated value
     Q <= ACC_VALUE;
 
 end Structural;

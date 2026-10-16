@@ -1,3 +1,4 @@
+
 LIBRARY ieee;
 USE ieee.std_logic_1164.ALL;
 USE ieee.numeric_std.ALL;
@@ -6,7 +7,6 @@ ENTITY cpu_top_tb IS
 END cpu_top_tb;
 
 ARCHITECTURE behavior OF cpu_top_tb IS
-
     COMPONENT cpu_top
         PORT (
             CLK   : IN  std_logic;
@@ -16,16 +16,14 @@ ARCHITECTURE behavior OF cpu_top_tb IS
             PC    : OUT std_logic_vector(3 downto 0)
         );
     END COMPONENT;
-    -- Inputs
-    signal CLK   : std_logic := '0';
-    signal RESET : std_logic := '0';
+    SIGNAL CLK   : std_logic := '0';
+    SIGNAL RESET : std_logic := '1';
 
-    -- Outputs
-    signal Q  : std_logic_vector(7 downto 0);
-    signal Z  : std_logic;
-    signal PC : std_logic_vector(3 downto 0);
+    SIGNAL Q  : std_logic_vector(7 downto 0);
+    SIGNAL Z  : std_logic;
+    SIGNAL PC : std_logic_vector(3 downto 0);
 
-    constant CLK_PERIOD : time := 20 ns;
+    CONSTANT CLK_PERIOD : time := 20 ns;
 
 BEGIN
     -- Instantiate the CPU
@@ -37,84 +35,89 @@ BEGIN
             Z     => Z,
             PC    => PC
         );
+    -- Clock generation
+    clk_process : PROCESS
+    BEGIN
+        LOOP
+            CLK <= '0';
+            WAIT FOR CLK_PERIOD / 2;
 
-    -- Clock generation: 20 ns period
-    clk_process : process
-    begin
-        CLK <= '0';
-        wait for CLK_PERIOD / 2;
-        CLK <= '1';
-        wait for CLK_PERIOD / 2;
-    end process;
-    -- Set 9 test sequence
-    stim_proc : process
-    begin
-        -- Apply synchronous reset
+            CLK <= '1';
+            WAIT FOR CLK_PERIOD / 2;
+        END LOOP;
+    END PROCESS;
+    -- Set 9 CPU test sequence
+    stim_proc : PROCESS
+    BEGIN
+
+        -- STEP 1: Synchronous reset
         RESET <= '1';
-        wait for CLK_PERIOD;
-        wait for 1 ns;
 
-        assert Q = x"00" and Z = '1' and PC = "0000"
-            report "FAIL: Reset state"
-            severity error;
+        WAIT UNTIL rising_edge(CLK);
+        WAIT FOR 1 ns;
 
+        ASSERT Q = x"00" AND Z = '1' AND PC = "0000"
+            REPORT "FAIL: Reset state"
+            SEVERITY failure;
+        -- Release reset
         RESET <= '0';
-        -- Instruction 0: LDI FF
-        wait for CLK_PERIOD;
-        wait for 1 ns;
 
-        assert Q = x"FF" and Z = '0' and PC = "0001"
-            report "FAIL: LDI FF"
-            severity error;
+        -- STEP 2: Instruction 0 - LDI FF
+        WAIT UNTIL rising_edge(CLK);
+        WAIT FOR 1 ns;
 
-        -- Instruction 1: NOT
-        wait for CLK_PERIOD;
-        wait for 1 ns;
-        assert Q = x"00" and Z = '1' and PC = "0010"
-            report "FAIL: NOT"
-            severity error;
+        ASSERT Q = x"FF" AND Z = '0' AND PC = "0001"
+            REPORT "FAIL: LDI FF"
+            SEVERITY failure;
+        -- STEP 3: Instruction 1 - NOT
+        WAIT UNTIL rising_edge(CLK);
+        WAIT FOR 1 ns;
 
-        -- Instruction 2: JZ 05 (taken)
-        wait for CLK_PERIOD;
-        wait for 1 ns;
+        ASSERT Q = x"00" AND Z = '1' AND PC = "0010"
+            REPORT "FAIL: NOT"
+            SEVERITY failure;
 
-        assert Q = x"00" and Z = '1' and PC = "0101"
-            report "FAIL: JZ 05"
-            severity error;
-        -- Instruction 5: ADD 11
-        wait for CLK_PERIOD;
-        wait for 1 ns;
+        -- STEP 4: Instruction 2 - JZ 05 (taken)
+        WAIT UNTIL rising_edge(CLK);
+        WAIT FOR 1 ns;
+        ASSERT Q = x"00" AND Z = '1' AND PC = "0101"
+            REPORT "FAIL: JZ 05 taken"
+            SEVERITY failure;
 
-        assert Q = x"11" and Z = '0' and PC = "0110"
-            report "FAIL: ADD 11"
-            severity error;
+        -- STEP 5: Instruction 5 - ADD 11
+        WAIT UNTIL rising_edge(CLK);
+        WAIT FOR 1 ns;
 
-        -- Instruction 6: SHL
-        wait for CLK_PERIOD;
-        wait for 1 ns;
-        assert Q = x"22" and Z = '0' and PC = "0111"
-            report "FAIL: SHL at address 6"
-            severity error;
+        ASSERT Q = x"11" AND Z = '0' AND PC = "0110"
+            REPORT "FAIL: ADD 11"
+            SEVERITY failure;
+        -- STEP 6: Instruction 6 - SHL
+        WAIT UNTIL rising_edge(CLK);
+        WAIT FOR 1 ns;
 
-        -- Instruction 7: JZ 00 (not taken)
-        wait for CLK_PERIOD;
-        wait for 1 ns;
+        ASSERT Q = x"22" AND Z = '0' AND PC = "0111"
+            REPORT "FAIL: SHL at address 6"
+            SEVERITY failure;
 
-        assert Q = x"22" and Z = '0' and PC = "1000"
-            report "FAIL: JZ 00 not taken"
-            severity error;
-        -- Instruction 8: SHL
-        wait for CLK_PERIOD;
-        wait for 1 ns;
+        -- STEP 7: Instruction 7 - JZ 00 (not taken)
+        WAIT UNTIL rising_edge(CLK);
+        WAIT FOR 1 ns;
+        ASSERT Q = x"22" AND Z = '0' AND PC = "1000"
+            REPORT "FAIL: JZ 00 not taken"
+            SEVERITY failure;
 
-        assert Q = x"44" and Z = '0' and PC = "1001"
-            report "FAIL: SHL at address 8"
-            severity error;
+        -- STEP 8: Instruction 8 - SHL
+        WAIT UNTIL rising_edge(CLK);
+        WAIT FOR 1 ns;
 
-        report "Set 9 CPU testbench completed."
-            severity note;
+        ASSERT Q = x"44" AND Z = '0' AND PC = "1001"
+            REPORT "FAIL: SHL at address 8"
+            SEVERITY failure;
+        -- All tests passed
+        REPORT "PASS: Set 9 CPU testbench completed successfully."
+            SEVERITY note;
 
-        wait;
-    end process;
+        WAIT;
+    END PROCESS;
 
 END behavior;
