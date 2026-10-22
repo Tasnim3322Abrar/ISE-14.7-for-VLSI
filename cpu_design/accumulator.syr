@@ -1,0 +1,445 @@
+Release 14.7 - xst P.20131013 (lin64)
+Copyright (c) 1995-2013 Xilinx, Inc.  All rights reserved.
+--> 
+Parameter TMPDIR set to xst/projnav.tmp
+
+
+Total REAL time to Xst completion: 0.00 secs
+Total CPU time to Xst completion: 0.03 secs
+ 
+--> 
+Parameter xsthdpdir set to xst
+
+
+Total REAL time to Xst completion: 0.00 secs
+Total CPU time to Xst completion: 0.03 secs
+ 
+--> 
+Reading design: accumulator.prj
+
+TABLE OF CONTENTS
+  1) Synthesis Options Summary
+  2) HDL Parsing
+  3) HDL Elaboration
+  4) HDL Synthesis
+       4.1) HDL Synthesis Report
+  5) Advanced HDL Synthesis
+       5.1) Advanced HDL Synthesis Report
+  6) Low Level Synthesis
+  7) Partition Report
+  8) Design Summary
+       8.1) Primitive and Black Box Usage
+       8.2) Device utilization summary
+       8.3) Partition Resource Summary
+       8.4) Timing Report
+            8.4.1) Clock Information
+            8.4.2) Asynchronous Control Signals Information
+            8.4.3) Timing Summary
+            8.4.4) Timing Details
+            8.4.5) Cross Clock Domains Report
+
+
+=========================================================================
+*                      Synthesis Options Summary                        *
+=========================================================================
+---- Source Parameters
+Input File Name                    : "accumulator.prj"
+Ignore Synthesis Constraint File   : NO
+
+---- Target Parameters
+Output File Name                   : "accumulator"
+Output Format                      : NGC
+Target Device                      : xc7a100t-3-csg324
+
+---- Source Options
+Top Module Name                    : accumulator
+Automatic FSM Extraction           : YES
+FSM Encoding Algorithm             : Auto
+Safe Implementation                : No
+FSM Style                          : LUT
+RAM Extraction                     : Yes
+RAM Style                          : Auto
+ROM Extraction                     : Yes
+Shift Register Extraction          : YES
+ROM Style                          : Auto
+Resource Sharing                   : YES
+Asynchronous To Synchronous        : NO
+Shift Register Minimum Size        : 2
+Use DSP Block                      : Auto
+Automatic Register Balancing       : No
+
+---- Target Options
+LUT Combining                      : Auto
+Reduce Control Sets                : Auto
+Add IO Buffers                     : YES
+Global Maximum Fanout              : 100000
+Add Generic Clock Buffer(BUFG)     : 32
+Register Duplication               : YES
+Optimize Instantiated Primitives   : NO
+Use Clock Enable                   : Auto
+Use Synchronous Set                : Auto
+Use Synchronous Reset              : Auto
+Pack IO Registers into IOBs        : Auto
+Equivalent register Removal        : YES
+
+---- General Options
+Optimization Goal                  : Speed
+Optimization Effort                : 1
+Power Reduction                    : NO
+Keep Hierarchy                     : No
+Netlist Hierarchy                  : As_Optimized
+RTL Output                         : Yes
+Global Optimization                : AllClockNets
+Read Cores                         : YES
+Write Timing Constraints           : NO
+Cross Clock Analysis               : NO
+Hierarchy Separator                : /
+Bus Delimiter                      : <>
+Case Specifier                     : Maintain
+Slice Utilization Ratio            : 100
+BRAM Utilization Ratio             : 100
+DSP48 Utilization Ratio            : 100
+Auto BRAM Packing                  : NO
+Slice Utilization Ratio Delta      : 5
+
+=========================================================================
+
+
+=========================================================================
+*                          HDL Parsing                                  *
+=========================================================================
+Parsing VHDL file "/home/ise/computer/cpu_design/nand_gate.vhd" into library work
+Parsing entity <nand_gate>.
+Parsing architecture <Dataflow> of entity <nand_gate>.
+Parsing VHDL file "/home/ise/computer/cpu_design/not_gate.vhd" into library work
+Parsing entity <not_gate>.
+Parsing architecture <Structural> of entity <not_gate>.
+Parsing VHDL file "/home/ise/computer/cpu_design/or_gate.vhd" into library work
+Parsing entity <or_gate>.
+Parsing architecture <Structural> of entity <or_gate>.
+Parsing VHDL file "/home/ise/computer/cpu_design/d_latch.vhd" into library work
+Parsing entity <d_latch>.
+Parsing architecture <Structural> of entity <d_latch>.
+Parsing VHDL file "/home/ise/computer/cpu_design/and_gate.vhd" into library work
+Parsing entity <and_gate>.
+Parsing architecture <Structural> of entity <and_gate>.
+Parsing VHDL file "/home/ise/computer/cpu_design/mux_8bit.vhd" into library work
+Parsing entity <mux_8bit>.
+Parsing architecture <Structural> of entity <mux_8bit>.
+Parsing VHDL file "/home/ise/computer/cpu_design/d_flip_flop.vhd" into library work
+Parsing entity <d_flip_flop>.
+Parsing architecture <Structural> of entity <d_flip_flop>.
+Parsing VHDL file "/home/ise/computer/cpu_design/register_8bit.vhd" into library work
+Parsing entity <register_8bit>.
+Parsing architecture <Structural> of entity <register_8bit>.
+Parsing VHDL file "/home/ise/computer/cpu_design/accumulator.vhd" into library work
+Parsing entity <accumulator>.
+Parsing architecture <Structural> of entity <accumulator>.
+
+=========================================================================
+*                            HDL Elaboration                            *
+=========================================================================
+
+Elaborating entity <accumulator> (architecture <Structural>) from library <work>.
+
+Elaborating entity <register_8bit> (architecture <Structural>) from library <work>.
+
+Elaborating entity <not_gate> (architecture <Structural>) from library <work>.
+
+Elaborating entity <nand_gate> (architecture <Dataflow>) from library <work>.
+
+Elaborating entity <mux_8bit> (architecture <Structural>) from library <work>.
+
+Elaborating entity <and_gate> (architecture <Structural>) from library <work>.
+
+Elaborating entity <or_gate> (architecture <Structural>) from library <work>.
+
+Elaborating entity <d_flip_flop> (architecture <Structural>) from library <work>.
+
+Elaborating entity <d_latch> (architecture <Structural>) from library <work>.
+WARNING:Xst:2972 - "/home/ise/computer/cpu_design/register_8bit.vhd" line 20. All outputs of instance <CLK_INV> of block <not_gate> are unconnected in block <register_8bit>. Underlying logic will be removed.
+
+=========================================================================
+*                           HDL Synthesis                               *
+=========================================================================
+
+Synthesizing Unit <accumulator>.
+    Related source file is "/home/ise/computer/cpu_design/accumulator.vhd".
+    Summary:
+	no macro.
+Unit <accumulator> synthesized.
+
+Synthesizing Unit <register_8bit>.
+    Related source file is "/home/ise/computer/cpu_design/register_8bit.vhd".
+INFO:Xst:3210 - "/home/ise/computer/cpu_design/register_8bit.vhd" line 20: Output port <Y> of the instance <CLK_INV> is unconnected or connected to loadless signal.
+    Summary:
+	no macro.
+Unit <register_8bit> synthesized.
+
+Synthesizing Unit <not_gate>.
+    Related source file is "/home/ise/computer/cpu_design/not_gate.vhd".
+    Summary:
+	no macro.
+Unit <not_gate> synthesized.
+
+Synthesizing Unit <nand_gate>.
+    Related source file is "/home/ise/computer/cpu_design/nand_gate.vhd".
+    Summary:
+	no macro.
+Unit <nand_gate> synthesized.
+
+Synthesizing Unit <mux_8bit>.
+    Related source file is "/home/ise/computer/cpu_design/mux_8bit.vhd".
+    Summary:
+	no macro.
+Unit <mux_8bit> synthesized.
+
+Synthesizing Unit <and_gate>.
+    Related source file is "/home/ise/computer/cpu_design/and_gate.vhd".
+    Summary:
+	no macro.
+Unit <and_gate> synthesized.
+
+Synthesizing Unit <or_gate>.
+    Related source file is "/home/ise/computer/cpu_design/or_gate.vhd".
+    Summary:
+	no macro.
+Unit <or_gate> synthesized.
+
+Synthesizing Unit <d_flip_flop>.
+    Related source file is "/home/ise/computer/cpu_design/d_flip_flop.vhd".
+    Summary:
+	inferred   1 Multiplexer(s).
+Unit <d_flip_flop> synthesized.
+
+Synthesizing Unit <d_latch>.
+    Related source file is "/home/ise/computer/cpu_design/d_latch.vhd".
+    Summary:
+	no macro.
+Unit <d_latch> synthesized.
+
+=========================================================================
+HDL Synthesis Report
+
+Macro Statistics
+# Multiplexers                                         : 8
+ 1-bit 2-to-1 multiplexer                              : 8
+
+=========================================================================
+
+=========================================================================
+*                       Advanced HDL Synthesis                          *
+=========================================================================
+
+WARNING:Xst:1290 - Hierarchical block <INV1> is unconnected in block <REG_MUX>.
+   It will be removed from the design.
+WARNING:Xst:1290 - Hierarchical block <GEN_MUX[0].AND1> is unconnected in block <REG_MUX>.
+   It will be removed from the design.
+WARNING:Xst:1290 - Hierarchical block <GEN_MUX[1].AND1> is unconnected in block <REG_MUX>.
+   It will be removed from the design.
+WARNING:Xst:1290 - Hierarchical block <GEN_MUX[2].AND1> is unconnected in block <REG_MUX>.
+   It will be removed from the design.
+WARNING:Xst:1290 - Hierarchical block <GEN_MUX[3].AND1> is unconnected in block <REG_MUX>.
+   It will be removed from the design.
+WARNING:Xst:1290 - Hierarchical block <GEN_MUX[4].AND1> is unconnected in block <REG_MUX>.
+   It will be removed from the design.
+WARNING:Xst:1290 - Hierarchical block <GEN_MUX[5].AND1> is unconnected in block <REG_MUX>.
+   It will be removed from the design.
+WARNING:Xst:1290 - Hierarchical block <GEN_MUX[6].AND1> is unconnected in block <REG_MUX>.
+   It will be removed from the design.
+WARNING:Xst:1290 - Hierarchical block <GEN_MUX[7].AND1> is unconnected in block <REG_MUX>.
+   It will be removed from the design.
+WARNING:Xst:1290 - Hierarchical block <NAND1> is unconnected in block <GEN_MUX[0].OR1>.
+   It will be removed from the design.
+WARNING:Xst:1290 - Hierarchical block <NAND1> is unconnected in block <GEN_MUX[1].OR1>.
+   It will be removed from the design.
+WARNING:Xst:1290 - Hierarchical block <NAND1> is unconnected in block <GEN_MUX[2].OR1>.
+   It will be removed from the design.
+WARNING:Xst:1290 - Hierarchical block <NAND1> is unconnected in block <GEN_MUX[3].OR1>.
+   It will be removed from the design.
+WARNING:Xst:1290 - Hierarchical block <NAND1> is unconnected in block <GEN_MUX[4].OR1>.
+   It will be removed from the design.
+WARNING:Xst:1290 - Hierarchical block <NAND1> is unconnected in block <GEN_MUX[5].OR1>.
+   It will be removed from the design.
+WARNING:Xst:1290 - Hierarchical block <NAND1> is unconnected in block <GEN_MUX[6].OR1>.
+   It will be removed from the design.
+WARNING:Xst:1290 - Hierarchical block <NAND1> is unconnected in block <GEN_MUX[7].OR1>.
+   It will be removed from the design.
+
+=========================================================================
+Advanced HDL Synthesis Report
+
+Found no macro
+=========================================================================
+
+=========================================================================
+*                         Low Level Synthesis                           *
+=========================================================================
+WARNING:Xst:1989 - Unit <mux_8bit>: instances <GEN_MUX[0].AND1>, <GEN_MUX[1].AND1> of unit <and_gate> are equivalent, second instance is removed
+WARNING:Xst:1989 - Unit <mux_8bit>: instances <GEN_MUX[0].AND1>, <GEN_MUX[2].AND1> of unit <and_gate> are equivalent, second instance is removed
+WARNING:Xst:1989 - Unit <mux_8bit>: instances <GEN_MUX[0].AND1>, <GEN_MUX[3].AND1> of unit <and_gate> are equivalent, second instance is removed
+WARNING:Xst:1989 - Unit <mux_8bit>: instances <GEN_MUX[0].AND1>, <GEN_MUX[4].AND1> of unit <and_gate> are equivalent, second instance is removed
+WARNING:Xst:1989 - Unit <mux_8bit>: instances <GEN_MUX[0].AND1>, <GEN_MUX[5].AND1> of unit <and_gate> are equivalent, second instance is removed
+WARNING:Xst:1989 - Unit <mux_8bit>: instances <GEN_MUX[0].AND1>, <GEN_MUX[6].AND1> of unit <and_gate> are equivalent, second instance is removed
+WARNING:Xst:1989 - Unit <mux_8bit>: instances <GEN_MUX[0].AND1>, <GEN_MUX[7].AND1> of unit <and_gate> are equivalent, second instance is removed
+WARNING:Xst:2170 - Unit register_8bit : the following signal(s) form a combinatorial loop: REG_BITS[7].BIT_REG/MASTER_LATCH/NAND_Q/n0000.
+WARNING:Xst:2170 - Unit register_8bit : the following signal(s) form a combinatorial loop: REG_BITS[5].BIT_REG/SLAVE_LATCH/NAND_Q/n0000.
+WARNING:Xst:2170 - Unit register_8bit : the following signal(s) form a combinatorial loop: REG_BITS[2].BIT_REG/SLAVE_LATCH/NAND_Q/n0000.
+WARNING:Xst:2170 - Unit register_8bit : the following signal(s) form a combinatorial loop: REG_BITS[1].BIT_REG/SLAVE_LATCH/NAND_Q/n0000.
+WARNING:Xst:2170 - Unit register_8bit : the following signal(s) form a combinatorial loop: REG_BITS[4].BIT_REG/MASTER_LATCH/NAND_Q/n0000.
+WARNING:Xst:2170 - Unit register_8bit : the following signal(s) form a combinatorial loop: REG_BITS[5].BIT_REG/MASTER_LATCH/NAND_Q/n0000.
+WARNING:Xst:2170 - Unit register_8bit : the following signal(s) form a combinatorial loop: REG_BITS[2].BIT_REG/MASTER_LATCH/NAND_Q/n0000.
+WARNING:Xst:2170 - Unit register_8bit : the following signal(s) form a combinatorial loop: REG_BITS[1].BIT_REG/MASTER_LATCH/NAND_Q/n0000.
+WARNING:Xst:2170 - Unit register_8bit : the following signal(s) form a combinatorial loop: REG_BITS[6].BIT_REG/SLAVE_LATCH/NAND_Q/n0000.
+WARNING:Xst:2170 - Unit register_8bit : the following signal(s) form a combinatorial loop: REG_BITS[3].BIT_REG/SLAVE_LATCH/NAND_Q/n0000.
+WARNING:Xst:2170 - Unit register_8bit : the following signal(s) form a combinatorial loop: REG_BITS[0].BIT_REG/SLAVE_LATCH/NAND_Q/n0000.
+WARNING:Xst:2170 - Unit register_8bit : the following signal(s) form a combinatorial loop: REG_BITS[6].BIT_REG/MASTER_LATCH/NAND_Q/n0000.
+WARNING:Xst:2170 - Unit register_8bit : the following signal(s) form a combinatorial loop: REG_BITS[3].BIT_REG/MASTER_LATCH/NAND_Q/n0000.
+WARNING:Xst:2170 - Unit register_8bit : the following signal(s) form a combinatorial loop: REG_BITS[7].BIT_REG/SLAVE_LATCH/NAND_Q/n0000.
+WARNING:Xst:2170 - Unit register_8bit : the following signal(s) form a combinatorial loop: REG_BITS[0].BIT_REG/MASTER_LATCH/NAND_Q/n0000.
+WARNING:Xst:2170 - Unit register_8bit : the following signal(s) form a combinatorial loop: REG_BITS[4].BIT_REG/SLAVE_LATCH/NAND_Q/n0000.
+
+Optimizing unit <accumulator> ...
+
+Optimizing unit <register_8bit> ...
+
+Mapping all equations...
+Building and optimizing final netlist ...
+Found area constraint ratio of 100 (+ 5) on block accumulator, actual ratio is 0.
+
+Final Macro Processing ...
+
+=========================================================================
+Final Register Report
+
+Found no macro
+=========================================================================
+
+=========================================================================
+*                           Partition Report                            *
+=========================================================================
+
+Partition Implementation Status
+-------------------------------
+
+  No Partitions were found in this design.
+
+-------------------------------
+
+=========================================================================
+*                            Design Summary                             *
+=========================================================================
+
+Top Level Output File Name         : accumulator.ngc
+
+Primitive and Black Box Usage:
+------------------------------
+# BELS                             : 24
+#      INV                         : 8
+#      LUT3                        : 8
+#      LUT4                        : 8
+# IO Buffers                       : 18
+#      IBUF                        : 10
+#      OBUF                        : 8
+
+Device utilization summary:
+---------------------------
+
+Selected Device : 7a100tcsg324-3 
+
+
+Slice Logic Utilization: 
+ Number of Slice LUTs:                   24  out of  63400     0%  
+    Number used as Logic:                24  out of  63400     0%  
+
+Slice Logic Distribution: 
+ Number of LUT Flip Flop pairs used:     24
+   Number with an unused Flip Flop:      24  out of     24   100%  
+   Number with an unused LUT:             0  out of     24     0%  
+   Number of fully used LUT-FF pairs:     0  out of     24     0%  
+   Number of unique control sets:         0
+
+IO Utilization: 
+ Number of IOs:                          18
+ Number of bonded IOBs:                  18  out of    210     8%  
+
+Specific Feature Utilization:
+
+---------------------------
+Partition Resource Summary:
+---------------------------
+
+  No Partitions were found in this design.
+
+---------------------------
+
+
+=========================================================================
+Timing Report
+
+NOTE: THESE TIMING NUMBERS ARE ONLY A SYNTHESIS ESTIMATE.
+      FOR ACCURATE TIMING INFORMATION PLEASE REFER TO THE TRACE REPORT
+      GENERATED AFTER PLACE-and-ROUTE.
+
+Clock Information:
+------------------
+No clock signals found in this design
+
+Asynchronous Control Signals Information:
+----------------------------------------
+No asynchronous control signals found in this design
+
+Timing Summary:
+---------------
+Speed Grade: -3
+
+   Minimum period: No path found
+   Minimum input arrival time before clock: No path found
+   Maximum output required time after clock: No path found
+   Maximum combinational path delay: 1.795ns
+
+Timing Details:
+---------------
+All values displayed in nanoseconds (ns)
+
+=========================================================================
+Timing constraint: Default path analysis
+  Total number of paths / destination ports: 32 / 8
+-------------------------------------------------------------------------
+Delay:               1.795ns (Levels of Logic = 5)
+  Source:            CLK (PAD)
+  Destination:       Q<7> (PAD)
+
+  Data Path: CLK to Q<7>
+                                Gate     Net
+    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
+    ----------------------------------------  ------------
+     IBUF:I->O            16   0.001   0.625  CLK_IBUF (CLK_IBUF)
+     LUT4:I0->O            2   0.097   0.299  ACC_REGISTER/REG_BITS[7].BIT_REG/MASTER_LATCH/NAND_Q/n00001 (ACC_REGISTER/REG_BITS[7].BIT_REG/MASTER_LATCH/NAND_Q/n0000)
+     LUT3:I2->O            2   0.097   0.283  ACC_REGISTER/REG_BITS[7].BIT_REG/SLAVE_LATCH/NAND_Q/n00001 (ACC_REGISTER/REG_BITS[7].BIT_REG/SLAVE_LATCH/NAND_Q/n0000)
+     INV:I->O              1   0.113   0.279  ACC_REGISTER/REG_BITS[7].BIT_REG/SLAVE_LATCH/NAND_Q/Y1_INV_0 (Q_7_OBUF)
+     OBUF:I->O                 0.000          Q_7_OBUF (Q<7>)
+    ----------------------------------------
+    Total                      1.795ns (0.308ns logic, 1.487ns route)
+                                       (17.2% logic, 82.8% route)
+
+=========================================================================
+
+Cross Clock Domains Report:
+--------------------------
+
+=========================================================================
+
+
+Total REAL time to Xst completion: 9.00 secs
+Total CPU time to Xst completion: 8.66 secs
+ 
+--> 
+
+
+Total memory usage is 593744 kilobytes
+
+Number of errors   :    0 (   0 filtered)
+Number of warnings :   41 (   0 filtered)
+Number of infos    :    1 (   0 filtered)
+

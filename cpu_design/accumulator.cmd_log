@@ -1,0 +1,2 @@
+xst -intstyle ise -ifn "/home/ise/computer/cpu_design/accumulator.xst" -ofn "/home/ise/computer/cpu_design/accumulator.syr" 
+xst -intstyle ise -ifn "/home/ise/computer/cpu_design/accumulator.xst" -ofn "/home/ise/computer/cpu_design/accumulator.syr" 

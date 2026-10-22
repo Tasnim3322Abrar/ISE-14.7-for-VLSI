@@ -2,9 +2,9 @@ Command line:
    instruction_decoder_tb_isim_beh.exe
      -simmode  gui
      -simrunnum  0
-     -socket  36512
+     -socket  58056
 
-Fri Oct 16 19:26:42 2026
+Thu Oct 22 13:51:36 2026
 
 
  Elaboration Time: 0.03 sec
@@ -20,9 +20,9 @@ Fri Oct 16 19:26:42 2026
  Total Traceable Variables  : 8
  Total Scalar Nets and Variables : 389
 
- Total Simulation Time: 0.04 sec
+ Total Simulation Time: 0.05 sec
 
  Current Memory Usage: 276.21 Meg
 
-Fri Oct 16 19:27:25 2026
+Thu Oct 22 13:51:57 2026
 

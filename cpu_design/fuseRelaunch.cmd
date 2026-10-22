@@ -1,1 +1,1 @@
--intstyle "ise" -incremental -lib "secureip" -o "/home/ise/computer/cpu_design/cpu_top_tb_isim_beh.exe" -prj "/home/ise/computer/cpu_design/cpu_top_tb_beh.prj" "work.cpu_top_tb" 
+-intstyle "ise" -incremental -lib "secureip" -o "/home/ise/computer/cpu_design/program_counter_tb_isim_beh.exe" -prj "/home/ise/computer/cpu_design/program_counter_tb_beh.prj" "work.program_counter_tb" 

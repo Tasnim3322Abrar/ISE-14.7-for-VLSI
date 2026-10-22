@@ -5,6 +5,8 @@ entity program_counter is
     Port (
         CLK   : in  STD_LOGIC;
         RESET : in  STD_LOGIC;
+        LOAD  : in  STD_LOGIC;
+        D     : in  STD_LOGIC_VECTOR(3 downto 0);
         PC    : out STD_LOGIC_VECTOR(3 downto 0)
     );
 end program_counter;

@@ -9,24 +9,40 @@ entity register_8bit is
         Q     : out STD_LOGIC_VECTOR(7 downto 0)
     );
 end register_8bit;
+architecture Structural of register_8bit is
 
-architecture Behavioral of register_8bit is
+    signal REG_DATA : STD_LOGIC_VECTOR(7 downto 0);
+    signal REG_NEXT : STD_LOGIC_VECTOR(7 downto 0);
+    signal CLK_NOT  : STD_LOGIC;
 
-    signal REG_DATA : STD_LOGIC_VECTOR(7 downto 0)
-        := (others => '0');
 begin
-
-    process(CLK)
-    begin
-        if rising_edge(CLK) then
-            if RESET = '1' then
-                REG_DATA <= (others => '0');
-            else
-                REG_DATA <= D;
-            end if;
-        end if;
-    end process;
+    -- Invert the clock using your NOT gate
+    CLK_INV : entity work.not_gate
+        port map (
+            A => CLK,
+            Y => CLK_NOT
+        );
+    -- Feedback mux: select zero during reset, otherwise D
+    -- Assumes mux A is selected for SEL='0'
+    -- and mux B for SEL='1'.
+    REG_MUX : entity work.mux_8bit
+        port map (
+            A   => (others => '0'),
+            B   => D,
+            SEL => RESET,
+            Y   => REG_NEXT
+        );
+    -- Eight storage bits
+    REG_BITS : for i in 0 to 7 generate
+        BIT_REG : entity work.d_flip_flop
+            port map (
+                D     => REG_NEXT(i),
+                CLK   => CLK,
+                RESET => '0',
+                Q     => REG_DATA(i)
+            );
+    end generate;
 
     Q <= REG_DATA;
 
-end Behavioral;
+end Structural;

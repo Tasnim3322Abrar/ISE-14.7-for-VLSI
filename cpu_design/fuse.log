@@ -1,51 +1,45 @@
-Running: /opt/Xilinx/14.7/ISE_DS/ISE/bin/lin64/unwrapped/fuse -intstyle ise -incremental -lib secureip -o /home/ise/computer/cpu_design/cpu_top_tb_isim_beh.exe -prj /home/ise/computer/cpu_design/cpu_top_tb_beh.prj work.cpu_top_tb 
+Running: /opt/Xilinx/14.7/ISE_DS/ISE/bin/lin64/unwrapped/fuse -intstyle ise -incremental -lib secureip -o /home/ise/computer/cpu_design/program_counter_tb_isim_beh.exe -prj /home/ise/computer/cpu_design/program_counter_tb_beh.prj work.program_counter_tb 
 ISim P.20131013 (signature 0xfbc00daa)
 Number of CPUs detected in this system: 1
 Turning on mult-threading, number of parallel sub-compilation jobs: 0 
 Determining compilation order of HDL files
 Parsing VHDL file "/home/ise/computer/cpu_design/nand_gate.vhd" into library work
 Parsing VHDL file "/home/ise/computer/cpu_design/xor_gate.vhd" into library work
+Parsing VHDL file "/home/ise/computer/cpu_design/not_gate.vhd" into library work
 Parsing VHDL file "/home/ise/computer/cpu_design/and_gate.vhd" into library work
 Parsing VHDL file "/home/ise/computer/cpu_design/or_gate.vhd" into library work
 Parsing VHDL file "/home/ise/computer/cpu_design/half_adder.vhd" into library work
+Parsing VHDL file "/home/ise/computer/cpu_design/d_latch.vhd" into library work
+Parsing VHDL file "/home/ise/computer/cpu_design/mux_8bit.vhd" into library work
 Parsing VHDL file "/home/ise/computer/cpu_design/full_adder.vhd" into library work
-Parsing VHDL file "/home/ise/computer/cpu_design/not_gate.vhd" into library work
-Parsing VHDL file "/home/ise/computer/cpu_design/full_adder_8bit.vhd" into library work
-Parsing VHDL file "/home/ise/computer/cpu_design/zero_flag.vhd" into library work
+Parsing VHDL file "/home/ise/computer/cpu_design/d_flip_flop.vhd" into library work
 Parsing VHDL file "/home/ise/computer/cpu_design/register_8bit.vhd" into library work
-Parsing VHDL file "/home/ise/computer/cpu_design/program_rom.vhd" into library work
-Parsing VHDL file "/home/ise/computer/cpu_design/instruction_decoder.vhd" into library work
-Parsing VHDL file "/home/ise/computer/cpu_design/control_unit.vhd" into library work
-Parsing VHDL file "/home/ise/computer/cpu_design/alu_8bit.vhd" into library work
-Parsing VHDL file "/home/ise/computer/cpu_design/cpu_top.vhd" into library work
-WARNING:HDLCompiler:946 - "/home/ise/computer/cpu_design/cpu_top.vhd" Line 159: Actual for formal port d is neither a static name nor a globally static expression
-Parsing VHDL file "/home/ise/computer/cpu_design/cpu_top_tb.vhd" into library work
+Parsing VHDL file "/home/ise/computer/cpu_design/full_adder_8bit.vhd" into library work
+Parsing VHDL file "/home/ise/computer/cpu_design/program_counter.vhd" into library work
+Parsing VHDL file "/home/ise/computer/cpu_design/program_counter_tb.vhd" into library work
 Starting static elaboration
 Completed static elaboration
-Fuse Memory Usage: 97440 KB
-Fuse CPU Usage: 460 ms
+Fuse Memory Usage: 95968 KB
+Fuse CPU Usage: 440 ms
 Compiling package standard
 Compiling package std_logic_1164
-Compiling package numeric_std
-Compiling architecture behavioral of entity program_rom [program_rom_default]
-Compiling architecture behavioral of entity instruction_decoder [instruction_decoder_default]
-Compiling architecture behavioral of entity control_unit [control_unit_default]
 Compiling architecture dataflow of entity nand_gate [nand_gate_default]
-Compiling architecture structural of entity not_gate [not_gate_default]
 Compiling architecture structural of entity xor_gate [xor_gate_default]
 Compiling architecture structural of entity and_gate [and_gate_default]
 Compiling architecture structural of entity half_adder [half_adder_default]
 Compiling architecture structural of entity or_gate [or_gate_default]
 Compiling architecture structural of entity full_adder [full_adder_default]
 Compiling architecture structural of entity full_adder_8bit [full_adder_8bit_default]
-Compiling architecture structural of entity alu_8bit [alu_8bit_default]
-Compiling architecture behavioral of entity register_8bit [register_8bit_default]
-Compiling architecture structural of entity zero_flag [zero_flag_default]
-Compiling architecture structural of entity cpu_top [cpu_top_default]
-Compiling architecture behavior of entity cpu_top_tb
+Compiling architecture structural of entity not_gate [not_gate_default]
+Compiling architecture structural of entity mux_8bit [mux_8bit_default]
+Compiling architecture structural of entity d_latch [d_latch_default]
+Compiling architecture structural of entity d_flip_flop [d_flip_flop_default]
+Compiling architecture structural of entity register_8bit [register_8bit_default]
+Compiling architecture structural of entity program_counter [program_counter_default]
+Compiling architecture behavior of entity program_counter_tb
 Time Resolution for simulation is 1ps.
-Compiled 34 VHDL Units
-Built simulation executable /home/ise/computer/cpu_design/cpu_top_tb_isim_beh.exe
-Fuse Memory Usage: 112144 KB
-Fuse CPU Usage: 610 ms
-GCC CPU Usage: 1100 ms
+Compiled 29 VHDL Units
+Built simulation executable /home/ise/computer/cpu_design/program_counter_tb_isim_beh.exe
+Fuse Memory Usage: 104612 KB
+Fuse CPU Usage: 510 ms
+GCC CPU Usage: 360 ms

@@ -120,7 +120,7 @@ begin
     --------------------------------------------------
     -- 6. Accumulator
     --------------------------------------------------
-    ACC_UNIT : entity work.register_8bit
+    ACC_UNIT : entity work.accumulator
         port map (
             D     => ACC_NEXT,
             CLK   => CLK,
@@ -154,14 +154,14 @@ begin
     --------------------------------------------------
     -- 9. Program Counter
     --------------------------------------------------
-    PC_UNIT : entity work.register_8bit
-        port map (
-            D     => "0000" & PC_NEXT,
-            CLK   => CLK,
-            RESET => RESET,
-            Q     => PC_REG_Q
-        );
-    PC_VALUE <= PC_REG_Q(3 downto 0);
+    PC_UNIT : entity work.program_counter
+		 port map (
+			  CLK   => CLK,
+			  RESET => RESET,
+			  LOAD  => JZ_EN and Z_VALUE,
+			  D     => OPERAND(3 downto 0),
+			  PC    => PC_VALUE
+		 );
     --------------------------------------------------
     -- 10. Outputs
     --------------------------------------------------

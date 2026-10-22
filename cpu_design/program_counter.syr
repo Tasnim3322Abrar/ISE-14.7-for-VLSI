@@ -114,6 +114,9 @@ Parsing architecture <Dataflow> of entity <nand_gate>.
 Parsing VHDL file "/home/ise/computer/cpu_design/xor_gate.vhd" into library work
 Parsing entity <xor_gate>.
 Parsing architecture <Structural> of entity <xor_gate>.
+Parsing VHDL file "/home/ise/computer/cpu_design/not_gate.vhd" into library work
+Parsing entity <not_gate>.
+Parsing architecture <Structural> of entity <not_gate>.
 Parsing VHDL file "/home/ise/computer/cpu_design/and_gate.vhd" into library work
 Parsing entity <and_gate>.
 Parsing architecture <Structural> of entity <and_gate>.
@@ -123,12 +126,21 @@ Parsing architecture <Structural> of entity <or_gate>.
 Parsing VHDL file "/home/ise/computer/cpu_design/half_adder.vhd" into library work
 Parsing entity <half_adder>.
 Parsing architecture <Structural> of entity <half_adder>.
+Parsing VHDL file "/home/ise/computer/cpu_design/d_latch.vhd" into library work
+Parsing entity <d_latch>.
+Parsing architecture <Structural> of entity <d_latch>.
+Parsing VHDL file "/home/ise/computer/cpu_design/mux_8bit.vhd" into library work
+Parsing entity <mux_8bit>.
+Parsing architecture <Structural> of entity <mux_8bit>.
 Parsing VHDL file "/home/ise/computer/cpu_design/full_adder.vhd" into library work
 Parsing entity <full_adder>.
 Parsing architecture <Structural> of entity <full_adder>.
+Parsing VHDL file "/home/ise/computer/cpu_design/d_flip_flop.vhd" into library work
+Parsing entity <d_flip_flop>.
+Parsing architecture <Structural> of entity <d_flip_flop>.
 Parsing VHDL file "/home/ise/computer/cpu_design/register_8bit.vhd" into library work
 Parsing entity <register_8bit>.
-Parsing architecture <Behavioral> of entity <register_8bit>.
+Parsing architecture <Structural> of entity <register_8bit>.
 Parsing VHDL file "/home/ise/computer/cpu_design/full_adder_8bit.vhd" into library work
 Parsing entity <full_adder_8bit>.
 Parsing architecture <Structural> of entity <full_adder_8bit>.
@@ -156,7 +168,16 @@ Elaborating entity <and_gate> (architecture <Structural>) from library <work>.
 
 Elaborating entity <or_gate> (architecture <Structural>) from library <work>.
 
-Elaborating entity <register_8bit> (architecture <Behavioral>) from library <work>.
+Elaborating entity <register_8bit> (architecture <Structural>) from library <work>.
+
+Elaborating entity <not_gate> (architecture <Structural>) from library <work>.
+
+Elaborating entity <mux_8bit> (architecture <Structural>) from library <work>.
+
+Elaborating entity <d_flip_flop> (architecture <Structural>) from library <work>.
+
+Elaborating entity <d_latch> (architecture <Structural>) from library <work>.
+WARNING:Xst:2972 - "/home/ise/computer/cpu_design/register_8bit.vhd" line 20. All outputs of instance <CLK_INV> of block <not_gate> are unconnected in block <register_8bit>. Underlying logic will be removed.
 
 =========================================================================
 *                           HDL Synthesis                               *
@@ -164,7 +185,9 @@ Elaborating entity <register_8bit> (architecture <Behavioral>) from library <wor
 
 Synthesizing Unit <program_counter>.
     Related source file is "/home/ise/computer/cpu_design/program_counter.vhd".
-INFO:Xst:3210 - "/home/ise/computer/cpu_design/program_counter.vhd" line 36: Output port <COUT> of the instance <INCREMENTER> is unconnected or connected to loadless signal.
+WARNING:Xst:647 - Input <D> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
+WARNING:Xst:647 - Input <LOAD> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
+INFO:Xst:3210 - "/home/ise/computer/cpu_design/program_counter.vhd" line 38: Output port <COUT> of the instance <INCREMENTER> is unconnected or connected to loadless signal.
     Summary:
 	no macro.
 Unit <program_counter> synthesized.
@@ -213,17 +236,41 @@ Unit <or_gate> synthesized.
 
 Synthesizing Unit <register_8bit>.
     Related source file is "/home/ise/computer/cpu_design/register_8bit.vhd".
-    Found 8-bit register for signal <REG_DATA>.
+INFO:Xst:3210 - "/home/ise/computer/cpu_design/register_8bit.vhd" line 20: Output port <Y> of the instance <CLK_INV> is unconnected or connected to loadless signal.
     Summary:
-	inferred   8 D-type flip-flop(s).
+	no macro.
 Unit <register_8bit> synthesized.
+
+Synthesizing Unit <not_gate>.
+    Related source file is "/home/ise/computer/cpu_design/not_gate.vhd".
+    Summary:
+	no macro.
+Unit <not_gate> synthesized.
+
+Synthesizing Unit <mux_8bit>.
+    Related source file is "/home/ise/computer/cpu_design/mux_8bit.vhd".
+    Summary:
+	no macro.
+Unit <mux_8bit> synthesized.
+
+Synthesizing Unit <d_flip_flop>.
+    Related source file is "/home/ise/computer/cpu_design/d_flip_flop.vhd".
+    Summary:
+	inferred   1 Multiplexer(s).
+Unit <d_flip_flop> synthesized.
+
+Synthesizing Unit <d_latch>.
+    Related source file is "/home/ise/computer/cpu_design/d_latch.vhd".
+    Summary:
+	no macro.
+Unit <d_latch> synthesized.
 
 =========================================================================
 HDL Synthesis Report
 
 Macro Statistics
-# Registers                                            : 1
- 8-bit register                                        : 1
+# Multiplexers                                         : 8
+ 1-bit 2-to-1 multiplexer                              : 8
 
 =========================================================================
 
@@ -231,11 +278,69 @@ Macro Statistics
 *                       Advanced HDL Synthesis                          *
 =========================================================================
 
+WARNING:Xst:1290 - Hierarchical block <GEN_MUX[4].AND2> is unconnected in block <REG_MUX>.
+   It will be removed from the design.
+WARNING:Xst:1290 - Hierarchical block <GEN_MUX[5].AND2> is unconnected in block <REG_MUX>.
+   It will be removed from the design.
+WARNING:Xst:1290 - Hierarchical block <GEN_MUX[6].AND2> is unconnected in block <REG_MUX>.
+   It will be removed from the design.
+WARNING:Xst:1290 - Hierarchical block <GEN_MUX[7].AND2> is unconnected in block <REG_MUX>.
+   It will be removed from the design.
+WARNING:Xst:1290 - Hierarchical block <GEN_MUX[4].AND1> is unconnected in block <REG_MUX>.
+   It will be removed from the design.
+WARNING:Xst:1290 - Hierarchical block <GEN_MUX[5].AND1> is unconnected in block <REG_MUX>.
+   It will be removed from the design.
+WARNING:Xst:1290 - Hierarchical block <GEN_MUX[6].AND1> is unconnected in block <REG_MUX>.
+   It will be removed from the design.
+WARNING:Xst:1290 - Hierarchical block <GEN_MUX[7].AND1> is unconnected in block <REG_MUX>.
+   It will be removed from the design.
+WARNING:Xst:1290 - Hierarchical block <GEN_MUX[4].OR1> is unconnected in block <REG_MUX>.
+   It will be removed from the design.
+WARNING:Xst:1290 - Hierarchical block <GEN_MUX[5].OR1> is unconnected in block <REG_MUX>.
+   It will be removed from the design.
+WARNING:Xst:1290 - Hierarchical block <GEN_MUX[6].OR1> is unconnected in block <REG_MUX>.
+   It will be removed from the design.
+WARNING:Xst:1290 - Hierarchical block <GEN_MUX[7].OR1> is unconnected in block <REG_MUX>.
+   It will be removed from the design.
+WARNING:Xst:1290 - Hierarchical block <REG_BITS[4].BIT_REG> is unconnected in block <PC_REGISTER>.
+   It will be removed from the design.
+WARNING:Xst:1290 - Hierarchical block <REG_BITS[5].BIT_REG> is unconnected in block <PC_REGISTER>.
+   It will be removed from the design.
+WARNING:Xst:1290 - Hierarchical block <REG_BITS[6].BIT_REG> is unconnected in block <PC_REGISTER>.
+   It will be removed from the design.
+WARNING:Xst:1290 - Hierarchical block <REG_BITS[7].BIT_REG> is unconnected in block <PC_REGISTER>.
+   It will be removed from the design.
 WARNING:Xst:1290 - Hierarchical block <AND1> is unconnected in block <HA1>.
    It will be removed from the design.
 WARNING:Xst:1290 - Hierarchical block <AND1> is unconnected in block <HA2>.
    It will be removed from the design.
-WARNING:Xst:1290 - Hierarchical block <OR1> is unconnected in block <FA7>.
+WARNING:Xst:1290 - Hierarchical block <OR1> is unconnected in block <FA3>.
+   It will be removed from the design.
+WARNING:Xst:1290 - Hierarchical block <FA4> is unconnected in block <INCREMENTER>.
+   It will be removed from the design.
+WARNING:Xst:1290 - Hierarchical block <FA5> is unconnected in block <INCREMENTER>.
+   It will be removed from the design.
+WARNING:Xst:1290 - Hierarchical block <FA6> is unconnected in block <INCREMENTER>.
+   It will be removed from the design.
+WARNING:Xst:1290 - Hierarchical block <FA7> is unconnected in block <INCREMENTER>.
+   It will be removed from the design.
+WARNING:Xst:1290 - Hierarchical block <INV1> is unconnected in block <REG_MUX>.
+   It will be removed from the design.
+WARNING:Xst:1290 - Hierarchical block <GEN_MUX[0].AND1> is unconnected in block <REG_MUX>.
+   It will be removed from the design.
+WARNING:Xst:1290 - Hierarchical block <GEN_MUX[1].AND1> is unconnected in block <REG_MUX>.
+   It will be removed from the design.
+WARNING:Xst:1290 - Hierarchical block <GEN_MUX[2].AND1> is unconnected in block <REG_MUX>.
+   It will be removed from the design.
+WARNING:Xst:1290 - Hierarchical block <GEN_MUX[3].AND1> is unconnected in block <REG_MUX>.
+   It will be removed from the design.
+WARNING:Xst:1290 - Hierarchical block <NAND1> is unconnected in block <GEN_MUX[0].OR1>.
+   It will be removed from the design.
+WARNING:Xst:1290 - Hierarchical block <NAND1> is unconnected in block <GEN_MUX[1].OR1>.
+   It will be removed from the design.
+WARNING:Xst:1290 - Hierarchical block <NAND1> is unconnected in block <GEN_MUX[2].OR1>.
+   It will be removed from the design.
+WARNING:Xst:1290 - Hierarchical block <NAND1> is unconnected in block <GEN_MUX[3].OR1>.
    It will be removed from the design.
 WARNING:Xst:1290 - Hierarchical block <NAND1> is unconnected in block <XOR1>.
    It will be removed from the design.
@@ -265,77 +370,43 @@ WARNING:Xst:1290 - Hierarchical block <NAND1> is unconnected in block <XOR1>.
    It will be removed from the design.
 WARNING:Xst:1290 - Hierarchical block <NAND3> is unconnected in block <XOR1>.
    It will be removed from the design.
-WARNING:Xst:1290 - Hierarchical block <AND1> is unconnected in block <HA1>.
-   It will be removed from the design.
-WARNING:Xst:1290 - Hierarchical block <NAND1> is unconnected in block <OR1>.
-   It will be removed from the design.
-WARNING:Xst:1290 - Hierarchical block <NAND1> is unconnected in block <XOR1>.
-   It will be removed from the design.
-WARNING:Xst:1290 - Hierarchical block <NAND3> is unconnected in block <XOR1>.
-   It will be removed from the design.
-WARNING:Xst:1290 - Hierarchical block <AND1> is unconnected in block <HA1>.
-   It will be removed from the design.
-WARNING:Xst:1290 - Hierarchical block <NAND1> is unconnected in block <OR1>.
-   It will be removed from the design.
-WARNING:Xst:1290 - Hierarchical block <NAND1> is unconnected in block <XOR1>.
-   It will be removed from the design.
-WARNING:Xst:1290 - Hierarchical block <NAND3> is unconnected in block <XOR1>.
-   It will be removed from the design.
-WARNING:Xst:1290 - Hierarchical block <AND1> is unconnected in block <HA1>.
-   It will be removed from the design.
-WARNING:Xst:1290 - Hierarchical block <NAND1> is unconnected in block <OR1>.
-   It will be removed from the design.
-WARNING:Xst:1290 - Hierarchical block <NAND1> is unconnected in block <XOR1>.
-   It will be removed from the design.
-WARNING:Xst:1290 - Hierarchical block <NAND3> is unconnected in block <XOR1>.
-   It will be removed from the design.
-WARNING:Xst:1290 - Hierarchical block <AND1> is unconnected in block <HA1>.
-   It will be removed from the design.
-WARNING:Xst:1290 - Hierarchical block <NAND1> is unconnected in block <OR1>.
-   It will be removed from the design.
-WARNING:Xst:1290 - Hierarchical block <NAND1> is unconnected in block <XOR1>.
-   It will be removed from the design.
-WARNING:Xst:1290 - Hierarchical block <NAND3> is unconnected in block <XOR1>.
-   It will be removed from the design.
-WARNING:Xst:2677 - Node <REG_DATA_4> of sequential type is unconnected in block <PC_REGISTER>.
-WARNING:Xst:2677 - Node <REG_DATA_5> of sequential type is unconnected in block <PC_REGISTER>.
-WARNING:Xst:2677 - Node <REG_DATA_6> of sequential type is unconnected in block <PC_REGISTER>.
-WARNING:Xst:2677 - Node <REG_DATA_7> of sequential type is unconnected in block <PC_REGISTER>.
-WARNING:Xst:1290 - Hierarchical block <AND1> is unconnected in block <HA2>.
-   It will be removed from the design.
-WARNING:Xst:1290 - Hierarchical block <OR1> is unconnected in block <FA3>.
-   It will be removed from the design.
-WARNING:Xst:1290 - Hierarchical block <FA4> is unconnected in block <INCREMENTER>.
-   It will be removed from the design.
-WARNING:Xst:1290 - Hierarchical block <FA5> is unconnected in block <INCREMENTER>.
-   It will be removed from the design.
-WARNING:Xst:1290 - Hierarchical block <FA6> is unconnected in block <INCREMENTER>.
-   It will be removed from the design.
-WARNING:Xst:1290 - Hierarchical block <FA7> is unconnected in block <INCREMENTER>.
-   It will be removed from the design.
 
 =========================================================================
 Advanced HDL Synthesis Report
 
-Macro Statistics
-# Registers                                            : 8
- Flip-Flops                                            : 8
-
+Found no macro
 =========================================================================
 
 =========================================================================
 *                         Low Level Synthesis                           *
 =========================================================================
+WARNING:Xst:1989 - Unit <mux_8bit>: instances <GEN_MUX[0].AND1>, <GEN_MUX[1].AND1> of unit <and_gate> are equivalent, second instance is removed
+WARNING:Xst:1989 - Unit <mux_8bit>: instances <GEN_MUX[0].AND1>, <GEN_MUX[2].AND1> of unit <and_gate> are equivalent, second instance is removed
+WARNING:Xst:1989 - Unit <mux_8bit>: instances <GEN_MUX[0].AND1>, <GEN_MUX[3].AND1> of unit <and_gate> are equivalent, second instance is removed
+WARNING:Xst:1989 - Unit <mux_8bit>: instances <GEN_MUX[0].AND1>, <GEN_MUX[4].AND1> of unit <and_gate> are equivalent, second instance is removed
+WARNING:Xst:1989 - Unit <mux_8bit>: instances <GEN_MUX[0].AND1>, <GEN_MUX[5].AND1> of unit <and_gate> are equivalent, second instance is removed
+WARNING:Xst:1989 - Unit <mux_8bit>: instances <GEN_MUX[0].AND1>, <GEN_MUX[6].AND1> of unit <and_gate> are equivalent, second instance is removed
+WARNING:Xst:1989 - Unit <mux_8bit>: instances <GEN_MUX[0].AND1>, <GEN_MUX[7].AND1> of unit <and_gate> are equivalent, second instance is removed
+WARNING:Xst:2170 - Unit register_8bit : the following signal(s) form a combinatorial loop: REG_BITS[2].BIT_REG/MASTER_LATCH/NAND_Q/n0000.
+WARNING:Xst:2170 - Unit register_8bit : the following signal(s) form a combinatorial loop: REG_BITS[4].BIT_REG/SLAVE_LATCH/NAND_Q/n0000.
+WARNING:Xst:2170 - Unit register_8bit : the following signal(s) form a combinatorial loop: REG_BITS[7].BIT_REG/SLAVE_LATCH/NAND_Q/n0000.
+WARNING:Xst:2170 - Unit register_8bit : the following signal(s) form a combinatorial loop: REG_BITS[4].BIT_REG/MASTER_LATCH/NAND_Q/n0000.
+WARNING:Xst:2170 - Unit register_8bit : the following signal(s) form a combinatorial loop: REG_BITS[7].BIT_REG/MASTER_LATCH/NAND_Q/n0000.
+WARNING:Xst:2170 - Unit register_8bit : the following signal(s) form a combinatorial loop: REG_BITS[0].BIT_REG/SLAVE_LATCH/NAND_Q/n0000.
+WARNING:Xst:2170 - Unit register_8bit : the following signal(s) form a combinatorial loop: REG_BITS[5].BIT_REG/SLAVE_LATCH/NAND_Q/n0000.
+WARNING:Xst:2170 - Unit register_8bit : the following signal(s) form a combinatorial loop: REG_BITS[5].BIT_REG/MASTER_LATCH/NAND_Q/n0000.
+WARNING:Xst:2170 - Unit register_8bit : the following signal(s) form a combinatorial loop: REG_BITS[0].BIT_REG/MASTER_LATCH/NAND_Q/n0000.
+WARNING:Xst:2170 - Unit register_8bit : the following signal(s) form a combinatorial loop: REG_BITS[6].BIT_REG/SLAVE_LATCH/NAND_Q/n0000.
+WARNING:Xst:2170 - Unit register_8bit : the following signal(s) form a combinatorial loop: REG_BITS[1].BIT_REG/MASTER_LATCH/NAND_Q/n0000.
+WARNING:Xst:2170 - Unit register_8bit : the following signal(s) form a combinatorial loop: REG_BITS[3].BIT_REG/SLAVE_LATCH/NAND_Q/n0000.
+WARNING:Xst:2170 - Unit register_8bit : the following signal(s) form a combinatorial loop: REG_BITS[1].BIT_REG/SLAVE_LATCH/NAND_Q/n0000.
+WARNING:Xst:2170 - Unit register_8bit : the following signal(s) form a combinatorial loop: REG_BITS[2].BIT_REG/SLAVE_LATCH/NAND_Q/n0000.
+WARNING:Xst:2170 - Unit register_8bit : the following signal(s) form a combinatorial loop: REG_BITS[3].BIT_REG/MASTER_LATCH/NAND_Q/n0000.
+WARNING:Xst:2170 - Unit register_8bit : the following signal(s) form a combinatorial loop: REG_BITS[6].BIT_REG/MASTER_LATCH/NAND_Q/n0000.
 
 Optimizing unit <program_counter> ...
 
 Optimizing unit <register_8bit> ...
-
-Optimizing unit <full_adder_8bit> ...
-WARNING:Xst:2677 - Node <PC_REGISTER/REG_DATA_7> of sequential type is unconnected in block <program_counter>.
-WARNING:Xst:2677 - Node <PC_REGISTER/REG_DATA_6> of sequential type is unconnected in block <program_counter>.
-WARNING:Xst:2677 - Node <PC_REGISTER/REG_DATA_5> of sequential type is unconnected in block <program_counter>.
-WARNING:Xst:2677 - Node <PC_REGISTER/REG_DATA_4> of sequential type is unconnected in block <program_counter>.
 
 Mapping all equations...
 Building and optimizing final netlist ...
@@ -346,10 +417,7 @@ Final Macro Processing ...
 =========================================================================
 Final Register Report
 
-Macro Statistics
-# Registers                                            : 4
- Flip-Flops                                            : 4
-
+Found no macro
 =========================================================================
 
 =========================================================================
@@ -371,17 +439,13 @@ Top Level Output File Name         : program_counter.ngc
 
 Primitive and Black Box Usage:
 ------------------------------
-# BELS                             : 4
-#      INV                         : 1
+# BELS                             : 15
+#      INV                         : 4
 #      LUT2                        : 1
-#      LUT3                        : 1
-#      LUT4                        : 1
-# FlipFlops/Latches                : 4
-#      FDR                         : 4
-# Clock Buffers                    : 1
-#      BUFGP                       : 1
-# IO Buffers                       : 5
-#      IBUF                        : 1
+#      LUT3                        : 5
+#      LUT4                        : 5
+# IO Buffers                       : 6
+#      IBUF                        : 2
 #      OBUF                        : 4
 
 Device utilization summary:
@@ -391,23 +455,21 @@ Selected Device : 7a100tcsg324-3
 
 
 Slice Logic Utilization: 
- Number of Slice Registers:               4  out of  126800     0%  
- Number of Slice LUTs:                    4  out of  63400     0%  
-    Number used as Logic:                 4  out of  63400     0%  
+ Number of Slice LUTs:                   15  out of  63400     0%  
+    Number used as Logic:                15  out of  63400     0%  
 
 Slice Logic Distribution: 
- Number of LUT Flip Flop pairs used:      8
-   Number with an unused Flip Flop:       4  out of      8    50%  
-   Number with an unused LUT:             4  out of      8    50%  
-   Number of fully used LUT-FF pairs:     0  out of      8     0%  
-   Number of unique control sets:         1
+ Number of LUT Flip Flop pairs used:     15
+   Number with an unused Flip Flop:      15  out of     15   100%  
+   Number with an unused LUT:             0  out of     15     0%  
+   Number of fully used LUT-FF pairs:     0  out of     15     0%  
+   Number of unique control sets:         0
 
 IO Utilization: 
- Number of IOs:                           6
+ Number of IOs:                          11
  Number of bonded IOBs:                   6  out of    210     2%  
 
 Specific Feature Utilization:
- Number of BUFG/BUFGCTRLs:                1  out of     32     3%  
 
 ---------------------------
 Partition Resource Summary:
@@ -427,11 +489,7 @@ NOTE: THESE TIMING NUMBERS ARE ONLY A SYNTHESIS ESTIMATE.
 
 Clock Information:
 ------------------
------------------------------------+------------------------+-------+
-Clock Signal                       | Clock buffer(FF name)  | Load  |
------------------------------------+------------------------+-------+
-CLK                                | BUFGP                  | 4     |
------------------------------------+------------------------+-------+
+No clock signals found in this design
 
 Asynchronous Control Signals Information:
 ----------------------------------------
@@ -441,100 +499,62 @@ Timing Summary:
 ---------------
 Speed Grade: -3
 
-   Minimum period: 1.059ns (Maximum Frequency: 943.842MHz)
-   Minimum input arrival time before clock: 0.643ns
-   Maximum output required time after clock: 0.659ns
-   Maximum combinational path delay: No path found
+   Minimum period: No path found
+   Minimum input arrival time before clock: No path found
+   Maximum output required time after clock: No path found
+   Maximum combinational path delay: 6.096ns
 
 Timing Details:
 ---------------
 All values displayed in nanoseconds (ns)
 
 =========================================================================
-Timing constraint: Default period analysis for Clock 'CLK'
-  Clock period: 1.059ns (frequency: 943.842MHz)
-  Total number of paths / destination ports: 10 / 4
+Timing constraint: Default path analysis
+  Total number of paths / destination ports: 45 / 4
 -------------------------------------------------------------------------
-Delay:               1.059ns (Levels of Logic = 1)
-  Source:            PC_REGISTER/REG_DATA_0 (FF)
-  Destination:       PC_REGISTER/REG_DATA_0 (FF)
-  Source Clock:      CLK rising
-  Destination Clock: CLK rising
+Delay:               6.096ns (Levels of Logic = 14)
+  Source:            CLK (PAD)
+  Destination:       PC<3> (PAD)
 
-  Data Path: PC_REGISTER/REG_DATA_0 to PC_REGISTER/REG_DATA_0
+  Data Path: CLK to PC<3>
                                 Gate     Net
     Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
     ----------------------------------------  ------------
-     FDR:C->Q              5   0.361   0.298  PC_REGISTER/REG_DATA_0 (PC_REGISTER/REG_DATA_0)
-     INV:I->O              1   0.113   0.279  INCREMENTER/SUM<0>1_INV_0 (PC_NEXT<0>)
-     FDR:D                     0.008          PC_REGISTER/REG_DATA_0
+     IBUF:I->O             8   0.001   0.589  CLK_IBUF (CLK_IBUF)
+     LUT4:I0->O            2   0.097   0.299  PC_REGISTER/REG_BITS[0].BIT_REG/MASTER_LATCH/NAND_Q/n00001 (PC_REGISTER/REG_BITS[0].BIT_REG/MASTER_LATCH/NAND_Q/n0000)
+     LUT3:I2->O            6   0.097   0.318  PC_REGISTER/REG_BITS[0].BIT_REG/SLAVE_LATCH/NAND_Q/n00001 (PC_REGISTER/REG_BITS[0].BIT_REG/SLAVE_LATCH/NAND_Q/n0000)
+     LUT2:I1->O            1   0.097   0.511  INCREMENTER/FA1/HA2/XOR1/NAND4/Y1 (PC_NEXT<1>)
+     LUT4:I1->O            2   0.097   0.299  PC_REGISTER/REG_BITS[1].BIT_REG/MASTER_LATCH/NAND_Q/n00001 (PC_REGISTER/REG_BITS[1].BIT_REG/MASTER_LATCH/NAND_Q/n0000)
+     LUT3:I2->O            5   0.097   0.398  PC_REGISTER/REG_BITS[1].BIT_REG/SLAVE_LATCH/NAND_Q/n00001 (PC_REGISTER/REG_BITS[1].BIT_REG/SLAVE_LATCH/NAND_Q/n0000)
+     LUT3:I1->O            1   0.097   0.511  INCREMENTER/FA2/HA2/XOR1/NAND4/Y1 (PC_NEXT<2>)
+     LUT4:I1->O            2   0.097   0.299  PC_REGISTER/REG_BITS[2].BIT_REG/MASTER_LATCH/NAND_Q/n00001 (PC_REGISTER/REG_BITS[2].BIT_REG/MASTER_LATCH/NAND_Q/n0000)
+     LUT3:I2->O            4   0.097   0.309  PC_REGISTER/REG_BITS[2].BIT_REG/SLAVE_LATCH/NAND_Q/n00001 (PC_REGISTER/REG_BITS[2].BIT_REG/SLAVE_LATCH/NAND_Q/n0000)
+     LUT4:I3->O            1   0.097   0.511  PC_NEXT<3>1 (PC_NEXT<3>)
+     LUT4:I1->O            2   0.097   0.299  PC_REGISTER/REG_BITS[3].BIT_REG/MASTER_LATCH/NAND_Q/n00001 (PC_REGISTER/REG_BITS[3].BIT_REG/MASTER_LATCH/NAND_Q/n0000)
+     LUT3:I2->O            3   0.097   0.289  PC_REGISTER/REG_BITS[3].BIT_REG/SLAVE_LATCH/NAND_Q/n00001 (PC_REGISTER/REG_BITS[3].BIT_REG/SLAVE_LATCH/NAND_Q/n0000)
+     INV:I->O              1   0.113   0.279  PC_REGISTER/REG_BITS[3].BIT_REG/SLAVE_LATCH/NAND_Q/Y1_INV_0 (PC_3_OBUF)
+     OBUF:I->O                 0.000          PC_3_OBUF (PC<3>)
     ----------------------------------------
-    Total                      1.059ns (0.482ns logic, 0.577ns route)
-                                       (45.5% logic, 54.5% route)
-
-=========================================================================
-Timing constraint: Default OFFSET IN BEFORE for Clock 'CLK'
-  Total number of paths / destination ports: 4 / 4
--------------------------------------------------------------------------
-Offset:              0.643ns (Levels of Logic = 1)
-  Source:            RESET (PAD)
-  Destination:       PC_REGISTER/REG_DATA_3 (FF)
-  Destination Clock: CLK rising
-
-  Data Path: RESET to PC_REGISTER/REG_DATA_3
-                                Gate     Net
-    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
-    ----------------------------------------  ------------
-     IBUF:I->O             4   0.001   0.293  RESET_IBUF (RESET_IBUF)
-     FDR:R                     0.349          PC_REGISTER/REG_DATA_0
-    ----------------------------------------
-    Total                      0.643ns (0.350ns logic, 0.293ns route)
-                                       (54.4% logic, 45.6% route)
-
-=========================================================================
-Timing constraint: Default OFFSET OUT AFTER for Clock 'CLK'
-  Total number of paths / destination ports: 4 / 4
--------------------------------------------------------------------------
-Offset:              0.659ns (Levels of Logic = 1)
-  Source:            PC_REGISTER/REG_DATA_0 (FF)
-  Destination:       PC<0> (PAD)
-  Source Clock:      CLK rising
-
-  Data Path: PC_REGISTER/REG_DATA_0 to PC<0>
-                                Gate     Net
-    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
-    ----------------------------------------  ------------
-     FDR:C->Q              5   0.361   0.298  PC_REGISTER/REG_DATA_0 (PC_REGISTER/REG_DATA_0)
-     OBUF:I->O                 0.000          PC_0_OBUF (PC<0>)
-    ----------------------------------------
-    Total                      0.659ns (0.361ns logic, 0.298ns route)
-                                       (54.8% logic, 45.2% route)
+    Total                      6.096ns (1.181ns logic, 4.915ns route)
+                                       (19.4% logic, 80.6% route)
 
 =========================================================================
 
 Cross Clock Domains Report:
 --------------------------
 
-Clock to Setup on destination clock CLK
----------------+---------+---------+---------+---------+
-               | Src:Rise| Src:Fall| Src:Rise| Src:Fall|
-Source Clock   |Dest:Rise|Dest:Rise|Dest:Fall|Dest:Fall|
----------------+---------+---------+---------+---------+
-CLK            |    1.059|         |         |         |
----------------+---------+---------+---------+---------+
-
 =========================================================================
 
 
 Total REAL time to Xst completion: 10.00 secs
-Total CPU time to Xst completion: 8.45 secs
+Total CPU time to Xst completion: 8.39 secs
  
 --> 
 
 
-Total memory usage is 602364 kilobytes
+Total memory usage is 594308 kilobytes
 
 Number of errors   :    0 (   0 filtered)
-Number of warnings :   47 (   0 filtered)
-Number of infos    :    1 (   0 filtered)
+Number of warnings :   72 (   0 filtered)
+Number of infos    :    2 (   0 filtered)
 
